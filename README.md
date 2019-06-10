@@ -1,6 +1,6 @@
 # RICHIE SAYS: LET'S CHANGE THIS NAME!
 
-^ lol no ty
+^ lol no - Amneet
 
 _Good things come in pairs_
 
