@@ -14,6 +14,7 @@ const GET_PRODUCT = 'GET_PRODUCT'
 // ACTION CREATORS
 
 const gotAllProducts = products => ({type: GET_ALL_PRODUCTS, products})
+
 const gotProduct = product => ({type: GET_PRODUCT, product})
 
 // THUNKS
@@ -36,6 +37,7 @@ export default function(state = initialState, action) {
   switch (action.type) {
     case GET_ALL_PRODUCTS:
       newState.allProducts = action.products
+      console.log('--------------', newState.allProducts)
       break
     case GET_PRODUCT:
       newState.selectedProduct = action.product
