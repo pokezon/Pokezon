@@ -17,7 +17,8 @@ const pokemon = pokeData.map(({id, name: {english}, type, base: {HP}}) => ({
   description: `A Pokemon of ${type[0]} type with the base HP of ${HP}`,
   imageUrl: `https://raw.githubusercontent.com/fanzeyi/pokemon.json/master/images/${padToThree(
     id
-  ) + english}.png`
+  ) + english}.png`,
+  quantity: Math.floor(Math.random() * 100)
 }))
 
 console.log(pokemon)
