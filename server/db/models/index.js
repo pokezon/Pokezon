@@ -15,6 +15,10 @@ const Product = require('./products')
  * for example, we can say: const {User} = require('../db/models')
  * instead of: const User = require('../db/models/user')
  */
+
+Order.belongsTo(User)
+Order.belongsTo(Product)
+
 module.exports = {
   User,
   Order,

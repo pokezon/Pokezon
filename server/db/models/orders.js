@@ -2,14 +2,6 @@ const Sequelize = require('sequelize')
 const db = require('../db')
 
 const Order = db.define('order', {
-  userId: {
-    type: Sequelize.INTEGER,
-    allowNull: false
-  },
-  productId: {
-    type: Sequelize.INTEGER,
-    allowNull: false
-  },
   quantity: {
     type: Sequelize.INTEGER,
     allowNull: false,
@@ -23,9 +15,6 @@ const Order = db.define('order', {
     type: Sequelize.BOOLEAN,
     allowNull: false,
     defaultValue: false
-  },
-  orderId: {
-    type: Sequelize.INTEGER
   }
 })
 
