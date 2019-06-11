@@ -21,3 +21,5 @@ const pokemon = pokeData.map(({id, name: {english}, type, base: {HP}}) => ({
 }))
 
 console.log(pokemon)
+
+module.exports = {pokemon}
