@@ -4,32 +4,39 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 
 class AllProducts extends Component {
-  async componentDidMount() {
-    await this.props.getProducts()
+  componentDidMount() {
+    this.props.getProducts()
   }
   render() {
-    console.log(this.props)
-    if (!this.props.allProducts) return 'WEBSITE SEIZED BY THE U.S. GOVERNMENT'
+    console.log('PROPS', this)
     return (
       <div>
-        <h2>Our Wonderful Collection</h2>
-        {this.props.allProducts.map(product => {
-          return (
-            <div key={product.id}>
-              <Link to={`/products/${product.id}`}>
-                <h4>{product.name}</h4>
-                <img src={product.imageUrl} />
-              </Link>
-              <button type="button">Add To Cart</button>
-            </div>
-          )
-        })}
+        {!this.props.allProducts ? (
+          'WEBSITE SEIZED BY THE U.S. GOVERNMENT'
+        ) : (
+          <div>
+            <h2>Our Wonderful Collection</h2>
+            {this.props.allProducts.map(product => {
+              return (
+                <div key={product.id}>
+                  <Link to={`/products/${product.id}`}>
+                    <h4>{product.name}</h4>
+                    <img src={product.imageUrl} />
+                  </Link>
+                  <button type="button">Add To Cart</button>
+                </div>
+              )
+            })}
+          </div>
+        )}
       </div>
     )
   }
 }
 
-const mapStateToProps = state => ({allProducts: state.allProducts})
+const mapStateToProps = state => ({allProducts: state.products.allProducts})
+
+// FOR ME(AMNEET): PRODUCTS LAYER IS CREATED FROM REDUCER SO U NEED TO GO TO THAT LAYER FIRST THAN ALL PRODUCTS
 
 const mapDispatchToProps = dispatch => ({
   getProducts: () => dispatch(gettingAllProducts())
