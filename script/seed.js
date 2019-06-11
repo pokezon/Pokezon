@@ -1,15 +1,63 @@
 'use strict'
-
+const {pokemon} = require('../seedData/etl')
 const db = require('../server/db')
-const {User} = require('../server/db/models')
+const {User, Order, Product} = require('../server/db/models')
 
 async function seed() {
   await db.sync({force: true})
   console.log('db synced!')
 
   const users = await Promise.all([
-    User.create({email: 'cody@email.com', password: '123'}),
-    User.create({email: 'murphy@email.com', password: '123'})
+    User.create({
+      email: 'cody@email.com',
+      password: '123',
+      username: 'cMaster'
+    }),
+    User.create({
+      email: 'murphy@email.com',
+      password: '123',
+      username: 'murphMaster'
+    })
+  ])
+
+  const products = await Promise.all(
+    pokemon.map(pokemon =>
+      Product.create({
+        name: pokemon.name,
+        type: pokemon.type,
+        price: pokemon.price,
+        imageUrl: pokemon.imageUrl,
+        description: pokemon.description,
+        quantity: pokemon.quantity
+      })
+    )
+  )
+
+  const orders = await Promise.all([
+    Order.create({
+      quantity: 2,
+      completedFlag: true,
+      userId: users[0].id,
+      productId: products[3].id
+    }),
+    Order.create({
+      quantity: 2,
+      completedFlag: false,
+      userId: users[1].id,
+      productId: products[500].id
+    }),
+    Order.create({
+      quantity: 2,
+      completedFlag: false,
+      userId: users[0].id,
+      productId: products[13].id
+    }),
+    Order.create({
+      quantity: 2,
+      completedFlag: true,
+      userId: users[1].id,
+      productId: products[53].id
+    })
   ])
 
   console.log(`seeded ${users.length} users`)
