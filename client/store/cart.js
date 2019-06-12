@@ -1,5 +1,4 @@
 import axios from 'axios'
-import {runInNewContext} from 'vm'
 
 // THIS IS INITIAL STATE
 const initialState = {
@@ -9,12 +8,17 @@ const initialState = {
 // ACTION TYPE
 
 const GET_ALL_CART_ITEMS = 'GET_ALL_CART_ITEMS'
+const ADD_CART_ITEM = 'ADD_CART_ITEM'
 const UPDATE_CART_ITEM_QUANTITY = 'UPDATE_CART_ITEM_QUANTITY'
 const REMOVE_CART_ITEM = 'REMOVE_CART_ITEM'
 
 // ACTION CREATORS
 
 const gotCart = items => ({type: GET_ALL_CART_ITEMS, items})
+const addCartItem = item => ({
+  type: ADD_CART_ITEM,
+  item
+})
 const updateCart = (id, quantity) => ({
   type: UPDATE_CART_ITEM_QUANTITY,
   id,
@@ -33,9 +37,18 @@ export const gettingCart = id => async dispatch => {
   }
 }
 
-export const updatingCart = item => async dispatch => {
+export const addingCartItem = item => async dispatch => {
   try {
-    const response = await axios.post(`/cart/${item.id}`, item)
+    const response = await axios.post(`/cart/`, item)
+    dispatch(addCartItem(response.data))
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+export const updatingCartItem = item => async dispatch => {
+  try {
+    const response = await axios.put(`/cart/${item.id}`, item)
     dispatch(updateCart(response.data))
   } catch (error) {
     console.error(error)
@@ -59,6 +72,9 @@ export default function(state = initialState, action) {
   switch (action.type) {
     case GET_ALL_CART_ITEMS:
       newState.cartItems = action.items
+      break
+    case ADD_CART_ITEM:
+      newState.cartItems = newState.cartItems.concat(action.item)
       break
     case UPDATE_CART_ITEM_QUANTITY:
       newState.cartItems = newState.cartItems.map(item => {
