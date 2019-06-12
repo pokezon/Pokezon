@@ -22,9 +22,10 @@ class SingleProduct extends Component {
         <div>
           <h2>{product.name}</h2>
           <img src={product.imageUrl} />
-          <h2>${product.type}</h2>
+          <h2>The {product.type} Pokemon</h2>
           <h2>${product.price}</h2>
           <h2>{product.description}</h2>
+          <Link to="/">Back to Home</Link>
         </div>
       )
     }
