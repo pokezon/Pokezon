@@ -18,7 +18,7 @@ class AllProducts extends Component {
             {this.props.allProducts.map(product => {
               return (
                 <div key={product.id}>
-                  <Link to={`/${product.id}`}>
+                  <Link to={`/products/${product.id}`}>
                     <h4>{product.name}</h4>
                     <img src={product.imageUrl} />
                   </Link>

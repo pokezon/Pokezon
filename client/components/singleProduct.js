@@ -10,7 +10,6 @@ class SingleProduct extends Component {
 
   render() {
     const product = this.props.product
-    console.log('------------------', product)
     if (!product) {
       return (
         <div>
@@ -28,7 +27,7 @@ class SingleProduct extends Component {
           <div>
             <button type="button">Add To Cart</button>
           </div>
-          <Link to="/">Back to Home</Link>
+          <Link to="/products">Back to All Products</Link>
         </div>
       )
     }
