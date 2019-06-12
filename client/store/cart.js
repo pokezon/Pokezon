@@ -62,7 +62,10 @@ export default function(state = initialState, action) {
       break
     case UPDATE_CART_ITEM_QUANTITY:
       newState.cartItems = newState.cartItems.map(item => {
-        if (item.id === action.id) return {...item, quantity: action.quantity}
+        if (item.id === action.id) {
+          // return {...item, quantity: action.quantity} //another way of doing this
+          item.quantity = action.quantity
+        }
         return item
       })
       break
