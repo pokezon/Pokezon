@@ -15,6 +15,9 @@ const Order = db.define('order', {
     type: Sequelize.BOOLEAN,
     allowNull: false,
     defaultValue: false
+  },
+  completedOrderId: {
+    type: Sequelize.STRING
   }
 })
 
