@@ -21,6 +21,4 @@ const pokemon = pokeData.map(({id, name: {english}, type, base: {HP}}) => ({
   quantity: Math.floor(Math.random() * 100)
 }))
 
-console.log(pokemon)
-
 module.exports = {pokemon}

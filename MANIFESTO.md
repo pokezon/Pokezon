@@ -10,6 +10,12 @@ Roles
 * Gitmaster
 * Testmaster
 
+#### Git Pull Request Format:
+
+verb (feature/file) quick descriptive text
+
+e.g => updated (landing page) added log in button
+
 ### Daily process
 
 * Morning standup started by yesterday's Taskmaster
