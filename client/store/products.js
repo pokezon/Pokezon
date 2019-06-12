@@ -37,7 +37,6 @@ export default function(state = initialState, action) {
   switch (action.type) {
     case GET_ALL_PRODUCTS:
       newState.allProducts = action.products
-      console.log('--------------', newState.allProducts)
       break
     case GET_PRODUCT:
       newState.selectedProduct = action.product

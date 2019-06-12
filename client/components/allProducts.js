@@ -8,7 +8,6 @@ class AllProducts extends Component {
     this.props.getProducts()
   }
   render() {
-    console.log('PROPS', this)
     return (
       <div>
         {!this.props.allProducts ? (
@@ -36,7 +35,7 @@ class AllProducts extends Component {
 
 const mapStateToProps = state => ({allProducts: state.products.allProducts})
 
-// FOR ME(AMNEET): PRODUCTS LAYER IS CREATED FROM REDUCER SO U NEED TO GO TO THAT LAYER FIRST THAN ALL PRODUCTS
+// FOR ME(AMNEET): PRODUCTS LAYER IS CREATED FROM REDUCER SO U NEED TO GO TO THAT LAYER
 
 const mapDispatchToProps = dispatch => ({
   getProducts: () => dispatch(gettingAllProducts())
