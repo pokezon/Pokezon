@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {gettingProduct} from '../store/products'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
+import Button from 'react-bootstrap/Button'
 
 class SingleProduct extends Component {
   componentDidMount() {
@@ -25,7 +26,7 @@ class SingleProduct extends Component {
           <h2>${product.price}</h2>
           <h2>{product.description}</h2>
           <div>
-            <button type="button">Add To Cart</button>
+            <Button variant="primary">Add To Cart</Button>
           </div>
           <Link to="/products">Back to All Products</Link>
         </div>
