@@ -14,6 +14,7 @@ const GET_PRODUCT = 'GET_PRODUCT'
 // ACTION CREATORS
 
 const gotAllProducts = products => ({type: GET_ALL_PRODUCTS, products})
+
 const gotProduct = product => ({type: GET_PRODUCT, product})
 
 // THUNKS
