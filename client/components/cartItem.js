@@ -6,7 +6,11 @@ class CartItem extends Component {
   }
 
   render() {
-    return <div>cart item</div>
+    return (
+      <div>
+        <h1>HELLLO</h1>
+      </div>
+    )
   }
 }
 
