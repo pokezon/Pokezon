@@ -22,7 +22,6 @@ class AllProducts extends Component {
                     <h4>{product.name}</h4>
                     <img src={product.imageUrl} />
                   </Link>
-                  <button type="button">Add To Cart</button>
                 </div>
               )
             })}

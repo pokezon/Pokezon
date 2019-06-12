@@ -25,6 +25,9 @@ class SingleProduct extends Component {
           <h2>The {product.type} Pokemon</h2>
           <h2>${product.price}</h2>
           <h2>{product.description}</h2>
+          <div>
+            <button type="button">Add To Cart</button>
+          </div>
           <Link to="/">Back to Home</Link>
         </div>
       )
