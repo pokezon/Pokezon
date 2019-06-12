@@ -28,9 +28,10 @@ const removeCartItem = id => ({type: REMOVE_CART_ITEM, id})
 
 // THUNKS
 
-export const gettingCart = id => async dispatch => {
+export const gettingCart = () => async dispatch => {
   try {
-    const response = await axios.get(`/cart/${id}`)
+    const response = await axios.get(`/api/cart`)
+    console.log('---------------', response)
     dispatch(gotCart(response.data))
   } catch (error) {
     console.error(error)
@@ -39,7 +40,7 @@ export const gettingCart = id => async dispatch => {
 
 export const addingCartItem = item => async dispatch => {
   try {
-    const response = await axios.post(`/cart/`, item)
+    const response = await axios.post(`/api/cart`, item)
     dispatch(addCartItem(response.data))
   } catch (error) {
     console.error(error)
@@ -48,7 +49,7 @@ export const addingCartItem = item => async dispatch => {
 
 export const updatingCartItem = item => async dispatch => {
   try {
-    const response = await axios.put(`/cart/${item.id}`, item)
+    const response = await axios.put(`/api/cart/${item.id}`, item)
     dispatch(updateCart(response.data))
   } catch (error) {
     console.error(error)
@@ -57,7 +58,7 @@ export const updatingCartItem = item => async dispatch => {
 
 export const removingCartItem = id => async dispatch => {
   try {
-    await axios.destroy(`/cart/${id}`)
+    await axios.destroy(`/api/cart/${id}`)
     dispatch(removeCartItem(id))
   } catch (error) {
     console.error(error)
