@@ -476,23 +476,6 @@
     }
   },
   {
-    "id": 29,
-    "name": {
-      "english": "Nidoran♀",
-      "japanese": "ニドラン♀",
-      "chinese": "尼多兰"
-    },
-    "type": ["Poison"],
-    "base": {
-      "HP": 55,
-      "Attack": 47,
-      "Defense": 52,
-      "Sp. Attack": 40,
-      "Sp. Defense": 40,
-      "Speed": 41
-    }
-  },
-  {
     "id": 30,
     "name": {
       "english": "Nidorina",
@@ -524,23 +507,6 @@
       "Sp. Attack": 75,
       "Sp. Defense": 85,
       "Speed": 76
-    }
-  },
-  {
-    "id": 32,
-    "name": {
-      "english": "Nidoran♂",
-      "japanese": "ニドラン♂",
-      "chinese": "尼多朗"
-    },
-    "type": ["Poison"],
-    "base": {
-      "HP": 46,
-      "Attack": 57,
-      "Defense": 40,
-      "Sp. Attack": 40,
-      "Sp. Defense": 40,
-      "Speed": 50
     }
   },
   {
@@ -1393,23 +1359,7 @@
       "Speed": 70
     }
   },
-  {
-    "id": 83,
-    "name": {
-      "english": "Farfetch'd",
-      "japanese": "カモネギ",
-      "chinese": "大葱鸭"
-    },
-    "type": ["Normal", "Flying"],
-    "base": {
-      "HP": 52,
-      "Attack": 90,
-      "Defense": 55,
-      "Sp. Attack": 58,
-      "Sp. Defense": 62,
-      "Speed": 60
-    }
-  },
+
   {
     "id": 84,
     "name": {
@@ -2056,23 +2006,7 @@
       "Speed": 115
     }
   },
-  {
-    "id": 122,
-    "name": {
-      "english": "Mr. Mime",
-      "japanese": "バリヤード",
-      "chinese": "魔墙人偶"
-    },
-    "type": ["Psychic", "Fairy"],
-    "base": {
-      "HP": 40,
-      "Attack": 45,
-      "Defense": 65,
-      "Sp. Attack": 100,
-      "Sp. Defense": 120,
-      "Speed": 90
-    }
-  },
+
   {
     "id": 123,
     "name": {
@@ -2226,23 +2160,7 @@
       "Speed": 60
     }
   },
-  {
-    "id": 132,
-    "name": {
-      "english": "Ditto",
-      "japanese": "メタモン",
-      "chinese": "百变怪"
-    },
-    "type": ["Normal"],
-    "base": {
-      "HP": 48,
-      "Attack": 48,
-      "Defense": 48,
-      "Sp. Attack": 48,
-      "Sp. Defense": 48,
-      "Speed": 48
-    }
-  },
+
   {
     "id": 133,
     "name": {
@@ -7445,23 +7363,7 @@
       "Speed": 10
     }
   },
-  {
-    "id": 439,
-    "name": {
-      "english": "Mime Jr.",
-      "japanese": "マネネ",
-      "chinese": "魔尼尼"
-    },
-    "type": ["Psychic", "Fairy"],
-    "base": {
-      "HP": 20,
-      "Attack": 25,
-      "Defense": 45,
-      "Sp. Attack": 70,
-      "Sp. Defense": 90,
-      "Speed": 60
-    }
-  },
+
   {
     "id": 440,
     "name": {
@@ -10930,23 +10832,7 @@
       "Speed": 90
     }
   },
-  {
-    "id": 644,
-    "name": {
-      "english": "Zekrom ",
-      "japanese": "ゼクロム",
-      "chinese": "捷克罗姆"
-    },
-    "type": ["Dragon", "Electric"],
-    "base": {
-      "HP": 100,
-      "Attack": 150,
-      "Defense": 120,
-      "Sp. Attack": 120,
-      "Sp. Defense": 100,
-      "Speed": 90
-    }
-  },
+
   {
     "id": 645,
     "name": {
@@ -11355,23 +11241,7 @@
       "Speed": 106
     }
   },
-  {
-    "id": 669,
-    "name": {
-      "english": "Flabébé",
-      "japanese": "フラベベ",
-      "chinese": "花蓓蓓"
-    },
-    "type": ["Fairy"],
-    "base": {
-      "HP": 44,
-      "Attack": 38,
-      "Defense": 39,
-      "Sp. Attack": 61,
-      "Sp. Defense": 79,
-      "Speed": 42
-    }
-  },
+
   {
     "id": 670,
     "name": {
@@ -13106,23 +12976,7 @@
       "Speed": 5
     }
   },
-  {
-    "id": 772,
-    "name": {
-      "english": "Type: Null",
-      "japanese": "タイプ：ヌル",
-      "chinese": "属性：空"
-    },
-    "type": ["Normal"],
-    "base": {
-      "HP": 95,
-      "Attack": 95,
-      "Defense": 95,
-      "Sp. Attack": 95,
-      "Sp. Defense": 95,
-      "Speed": 59
-    }
-  },
+
   {
     "id": 773,
     "name": {
@@ -13327,74 +13181,7 @@
       "Speed": 85
     }
   },
-  {
-    "id": 785,
-    "name": {
-      "english": "Tapu Koko",
-      "japanese": "カプ・コケコ",
-      "chinese": "卡璞・鸣鸣"
-    },
-    "type": ["Electric", "Fairy"],
-    "base": {
-      "HP": 70,
-      "Attack": 115,
-      "Defense": 85,
-      "Sp. Attack": 95,
-      "Sp. Defense": 75,
-      "Speed": 130
-    }
-  },
-  {
-    "id": 786,
-    "name": {
-      "english": "Tapu Lele",
-      "japanese": "カプ・テテフ",
-      "chinese": "卡璞・蝶蝶"
-    },
-    "type": ["Psychic", "Fairy"],
-    "base": {
-      "HP": 70,
-      "Attack": 85,
-      "Defense": 75,
-      "Sp. Attack": 130,
-      "Sp. Defense": 115,
-      "Speed": 95
-    }
-  },
-  {
-    "id": 787,
-    "name": {
-      "english": "Tapu Bulu",
-      "japanese": "カプ・ブルル",
-      "chinese": "卡璞・哞哞"
-    },
-    "type": ["Grass", "Fairy"],
-    "base": {
-      "HP": 70,
-      "Attack": 130,
-      "Defense": 115,
-      "Sp. Attack": 85,
-      "Sp. Defense": 95,
-      "Speed": 75
-    }
-  },
-  {
-    "id": 788,
-    "name": {
-      "english": "Tapu Fini",
-      "japanese": "カプ・レヒレ",
-      "chinese": "卡璞・鳍鳍"
-    },
-    "type": ["Water", "Fairy"],
-    "base": {
-      "HP": 70,
-      "Attack": 75,
-      "Defense": 115,
-      "Sp. Attack": 95,
-      "Sp. Defense": 130,
-      "Speed": 85
-    }
-  },
+
   {
     "id": 789,
     "name": {
