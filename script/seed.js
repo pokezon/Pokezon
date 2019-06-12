@@ -57,6 +57,12 @@ async function seed() {
       completedFlag: true,
       userId: users[1].id,
       productId: products[53].id
+    }),
+    Order.create({
+      quantity: 2,
+      completedFlag: false,
+      userId: users[0].id,
+      productId: products[1].id
     })
   ])
 
