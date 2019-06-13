@@ -15,7 +15,8 @@ class Cart extends Component {
         {this.props.cartItems.map(item => (
           <CartItem item={item} key={item.id} />
         ))}
-        <button>Checkout</button>
+        <br />
+        <button className="btn btn-success">Checkout</button>
       </div>
     )
   }

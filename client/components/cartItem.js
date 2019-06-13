@@ -19,7 +19,9 @@ class CartItem extends Component {
         {/* eventually to add ability to update quantity */}
         <h3>Quantity: {quantity}</h3>
         <h2>${product.price}</h2>
-        <button onClick={() => this.removeItem(id)}>Delete</button>
+        <button className="btn btn-danger" onClick={() => this.removeItem(id)}>
+          Delete
+        </button>
       </div>
     )
   }

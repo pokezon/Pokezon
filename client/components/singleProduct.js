@@ -28,8 +28,8 @@ class SingleProduct extends Component {
           <h2>{product.name}</h2>
           <img src={product.imageUrl} width="200" />
           <h2>The {product.type} Pokemon</h2>
-          <h2>${product.price}</h2>
-          <h2>{product.description}</h2>
+          <h4>${product.price}</h4>
+          <h3>{product.description}</h3>
           <div>
             <button
               className="btn btn-primary"
@@ -38,7 +38,10 @@ class SingleProduct extends Component {
               Add To Cart
             </button>
           </div>
-          <Link to="/products">Back to All Products</Link>
+          <br />
+          <Link to="/products">
+            <button className="btn btn-dark">Back to All Products </button>
+          </Link>
         </div>
       )
     }
