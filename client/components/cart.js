@@ -16,7 +16,9 @@ class Cart extends Component {
           <CartItem item={item} key={item.id} />
         ))}
         <br />
-        <button className="btn btn-success">Checkout</button>
+        <button className="btn btn-success" type="button">
+          Checkout
+        </button>
       </div>
     )
   }
