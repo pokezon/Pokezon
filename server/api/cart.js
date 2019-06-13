@@ -21,9 +21,23 @@ router.get('/', async (req, res, next) => {
   }
 })
 
+router.get('/:id', async (req, res, next) => {
+  try {
+    // if (req.user) {
+    const order = await Order.findByPk(req.params.id, {
+      include: [{model: Product}]
+    })
+    res.json(order)
+    // }
+  } catch (error) {
+    next(error)
+  }
+})
+
 router.post('/', async (req, res, next) => {
   try {
-    const cart = await Order.create(req.body)
+    const {id: productId, quantity} = req.body
+    const cart = await Order.create({productId, quantity, userId: req.user.id})
     res.status(201).json(cart)
   } catch (error) {
     next(error)

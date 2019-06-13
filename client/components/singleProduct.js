@@ -2,11 +2,16 @@ import React, {Component} from 'react'
 import {gettingProduct} from '../store/products'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
-import Button from 'react-bootstrap/Button'
+import {addingCartItem} from '../store/cart'
 
 class SingleProduct extends Component {
   componentDidMount() {
     this.props.getProduct(this.props.match.params.id)
+  }
+
+  addItem = product => {
+    this.props.addCartItem(product)
+    // that is dispatch
   }
 
   render() {
@@ -26,7 +31,12 @@ class SingleProduct extends Component {
           <h2>${product.price}</h2>
           <h2>{product.description}</h2>
           <div>
-            <Button variant="primary">Add To Cart</Button>
+            <button
+              className="btn btn-primary"
+              onClick={() => this.addItem(product)}
+            >
+              Add To Cart
+            </button>
           </div>
           <Link to="/products">Back to All Products</Link>
         </div>
@@ -38,7 +48,8 @@ class SingleProduct extends Component {
 const mapStateToProps = state => ({product: state.products.selectedProduct})
 
 const mapDispatchToProps = dispatch => ({
-  getProduct: id => dispatch(gettingProduct(id))
+  getProduct: id => dispatch(gettingProduct(id)),
+  addCartItem: product => dispatch(addingCartItem(product))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(SingleProduct)

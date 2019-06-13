@@ -1,8 +1,12 @@
 import React, {Component} from 'react'
-import {removingCartItem} from '../store/cart'
+import {removingCartItem, addingCartItem} from '../store/cart'
 import {connect} from 'react-redux'
 
 class CartItem extends Component {
+  addItem = item => {
+    this.props.addCartItem(item)
+    // that is dispatch
+  }
   removeItem = id => {
     this.props.removeCartItem(id)
   }
@@ -23,7 +27,8 @@ class CartItem extends Component {
 
 const dispatchToProps = dispatch => {
   return {
-    removeCartItem: id => dispatch(removingCartItem(id))
+    removeCartItem: id => dispatch(removingCartItem(id)),
+    addCartItem: item => dispatch(addingCartItem(item))
   }
 }
 
