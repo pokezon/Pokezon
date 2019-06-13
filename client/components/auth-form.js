@@ -11,25 +11,57 @@ const AuthForm = props => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit} name={name}>
-        <div>
-          <label htmlFor="email">
-            <small>Email</small>
+      <form onSubmit={handleSubmit} name={name} id="auth-form">
+        <div className="form-group">
+          <label htmlFor="username">
+            <small>Username:</small>
           </label>
-          <input name="email" type="text" />
+          <input
+            className="form-control"
+            name="username"
+            type="text"
+            placeholder="Username"
+          />
         </div>
-        <div>
+        {name === 'signup' ? (
+          <div className="form-group">
+            <label htmlFor="email">
+              <small>Email</small>
+            </label>
+            <input
+              className="form-control"
+              name="email"
+              type="text"
+              placeholder="Email"
+            />
+          </div>
+        ) : (
+          ''
+        )}
+        <div className="form-group">
           <label htmlFor="password">
-            <small>Password</small>
+            <small>Password:</small>
           </label>
-          <input name="password" type="password" />
+          <input
+            className="form-control"
+            name="password"
+            type="password"
+            placeholder="Password"
+          />
         </div>
         <div>
-          <button type="submit">{displayName}</button>
+          <button className="btn btn-success" type="submit">
+            {displayName}
+          </button>
+          <div className="divider" />
+          <a href="/auth/google">
+            <button className="btn btn-danger" type="button">
+              {displayName} with Google
+            </button>
+          </a>
         </div>
         {error && error.response && <div> {error.response.data} </div>}
       </form>
-      <a href="/auth/google">{displayName} with Google</a>
     </div>
   )
 }
@@ -62,9 +94,11 @@ const mapDispatch = dispatch => {
     handleSubmit(evt) {
       evt.preventDefault()
       const formName = evt.target.name
-      const email = evt.target.email.value
+      const username = evt.target.username.value
       const password = evt.target.password.value
-      dispatch(auth(email, password, formName))
+      const email = evt.target.email ? evt.target.email.value : {}
+      // {} is placeholder for email which is required arg for auth but is not collected at login. Hacky?
+      dispatch(auth(username, email, password, formName))
     }
   }
 }
