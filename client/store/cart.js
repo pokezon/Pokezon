@@ -31,17 +31,17 @@ const removeCartItem = id => ({type: REMOVE_CART_ITEM, id})
 export const gettingCart = () => async dispatch => {
   try {
     const response = await axios.get(`/api/cart`)
-    console.log('---------------', response)
     dispatch(gotCart(response.data))
   } catch (error) {
     console.error(error)
   }
 }
 
-export const addingCartItem = item => async dispatch => {
+export const addingCartItem = product => async dispatch => {
   try {
-    const response = await axios.post(`/api/cart`, item)
-    dispatch(addCartItem(response.data))
+    const response = await axios.post(`/api/cart`, product)
+    const item = await axios.get(`/api/cart/${response.data.id}`)
+    dispatch(addCartItem(item.data))
   } catch (error) {
     console.error(error)
   }

@@ -9,13 +9,14 @@ class Cart extends Component {
   }
 
   render() {
-    console.log('---------', this.props)
     return (
-      <div>
+      <div className="text-center">
         <h1>hello from cart.js</h1>
         {this.props.cartItems.map(item => (
           <CartItem item={item} key={item.id} />
         ))}
+        <br />
+        <button className="btn btn-success">Checkout</button>
       </div>
     )
   }

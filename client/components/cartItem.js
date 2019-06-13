@@ -1,8 +1,12 @@
 import React, {Component} from 'react'
-import {removingCartItem} from '../store/cart'
+import {removingCartItem, addingCartItem} from '../store/cart'
 import {connect} from 'react-redux'
 
 class CartItem extends Component {
+  addItem = item => {
+    this.props.addCartItem(item)
+    // that is dispatch
+  }
   removeItem = id => {
     this.props.removeCartItem(id)
   }
@@ -15,7 +19,9 @@ class CartItem extends Component {
         {/* eventually to add ability to update quantity */}
         <h3>Quantity: {quantity}</h3>
         <h2>${product.price}</h2>
-        <button onClick={() => this.removeItem(id)}>Delete</button>
+        <button className="btn btn-danger" onClick={() => this.removeItem(id)}>
+          Delete
+        </button>
       </div>
     )
   }
@@ -23,7 +29,8 @@ class CartItem extends Component {
 
 const dispatchToProps = dispatch => {
   return {
-    removeCartItem: id => dispatch(removingCartItem(id))
+    removeCartItem: id => dispatch(removingCartItem(id)),
+    addCartItem: item => dispatch(addingCartItem(item))
   }
 }
 
