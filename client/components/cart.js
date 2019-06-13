@@ -2,7 +2,8 @@ import React, {Component} from 'react'
 import CartItem from './cartItem'
 import {connect} from 'react-redux'
 import {gettingCart} from '../store/cart'
-
+import {Checkout} from './checkout'
+import {Link} from 'react-router-dom'
 class Cart extends Component {
   componentDidMount() {
     this.props.getCartItems()
@@ -17,7 +18,7 @@ class Cart extends Component {
         ))}
         <br />
         <button className="btn btn-success" type="button">
-          Checkout
+          <Link to="/checkout">Checkout</Link>
         </button>
       </div>
     )
