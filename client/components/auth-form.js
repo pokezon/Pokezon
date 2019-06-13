@@ -13,11 +13,21 @@ const AuthForm = props => {
     <div>
       <form onSubmit={handleSubmit} name={name}>
         <div>
-          <label htmlFor="email">
-            <small>Email</small>
+          <label htmlFor="username">
+            <small>Username</small>
           </label>
-          <input name="email" type="text" />
+          <input name="username" type="text" />
         </div>
+        {name === 'signup' ? (
+          <div>
+            <label htmlFor="email">
+              <small>Email</small>
+            </label>
+            <input name="email" type="text" />
+          </div>
+        ) : (
+          ''
+        )}
         <div>
           <label htmlFor="password">
             <small>Password</small>
@@ -62,9 +72,11 @@ const mapDispatch = dispatch => {
     handleSubmit(evt) {
       evt.preventDefault()
       const formName = evt.target.name
-      const email = evt.target.email.value
+      const username = evt.target.username.value
       const password = evt.target.password.value
-      dispatch(auth(email, password, formName))
+      const email = evt.target.email ? evt.target.email.value : {}
+      // {} is placeholder for email which is required arg for auth but is not collected at login. Hacky?
+      dispatch(auth(username, email, password, formName))
     }
   }
 }
