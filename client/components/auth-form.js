@@ -54,17 +54,14 @@ const AuthForm = props => {
             {displayName}
           </button>
           <div className="divider" />
-          <button
-            className="btn btn-danger"
-            type="button"
-            onClick={() => props.history.push('/auth/google')}
-          >
-            {displayName} with Google
-          </button>
+          <a href="/auth/google">
+            <button className="btn btn-danger" type="button">
+              {displayName} with Google
+            </button>
+          </a>
         </div>
         {error && error.response && <div> {error.response.data} </div>}
       </form>
-      <a href="/auth/google">{displayName} with Google</a>
     </div>
   )
 }
