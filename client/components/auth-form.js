@@ -11,31 +11,56 @@ const AuthForm = props => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit} name={name}>
-        <div>
+      <form onSubmit={handleSubmit} name={name} id="auth-form">
+        <div className="form-group">
           <label htmlFor="username">
-            <small>Username</small>
+            <small>Username:</small>
           </label>
-          <input name="username" type="text" />
+          <input
+            className="form-control"
+            name="username"
+            type="text"
+            placeholder="Username"
+          />
         </div>
         {name === 'signup' ? (
-          <div>
+          <div className="form-group">
             <label htmlFor="email">
               <small>Email</small>
             </label>
-            <input name="email" type="text" />
+            <input
+              className="form-control"
+              name="email"
+              type="text"
+              placeholder="Email"
+            />
           </div>
         ) : (
           ''
         )}
-        <div>
+        <div className="form-group">
           <label htmlFor="password">
-            <small>Password</small>
+            <small>Password:</small>
           </label>
-          <input name="password" type="password" />
+          <input
+            className="form-control"
+            name="password"
+            type="password"
+            placeholder="Password"
+          />
         </div>
         <div>
-          <button type="submit">{displayName}</button>
+          <button className="btn btn-success" type="submit">
+            {displayName}
+          </button>
+          <div className="divider" />
+          <button
+            className="btn btn-danger"
+            type="button"
+            onClick={() => props.history.push('/auth/google')}
+          >
+            {displayName} with Google
+          </button>
         </div>
         {error && error.response && <div> {error.response.data} </div>}
       </form>
