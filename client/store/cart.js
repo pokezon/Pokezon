@@ -11,6 +11,7 @@ const GET_ALL_CART_ITEMS = 'GET_ALL_CART_ITEMS'
 const ADD_CART_ITEM = 'ADD_CART_ITEM'
 const UPDATE_CART_ITEM_QUANTITY = 'UPDATE_CART_ITEM_QUANTITY'
 const REMOVE_CART_ITEM = 'REMOVE_CART_ITEM'
+const RESET_CART = 'RESET_CART'
 
 // ACTION CREATORS
 
@@ -25,6 +26,8 @@ const updateCart = (id, quantity) => ({
   quantity
 })
 const removeCartItem = id => ({type: REMOVE_CART_ITEM, id})
+
+const resetCart = () => ({type: RESET_CART})
 
 // THUNKS
 
@@ -65,6 +68,14 @@ export const removingCartItem = id => async dispatch => {
   }
 }
 
+export const resettingCart = () => dispatch => {
+  try {
+    dispatch(resetCart())
+  } catch (error) {
+    console.error(error)
+  }
+}
+
 //REDUCERS
 
 export default function(state = initialState, action) {
@@ -91,6 +102,8 @@ export default function(state = initialState, action) {
         item => item.id !== action.id
       )
       break
+    case RESET_CART:
+      return initialState
     default:
       return state
   }

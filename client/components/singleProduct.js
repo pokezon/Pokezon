@@ -10,8 +10,16 @@ class SingleProduct extends Component {
   }
 
   addItem = product => {
-    this.props.addCartItem(product)
-    // that is dispatch
+    if (this.props.isLoggedIn) {
+      this.props.addCartItem(product)
+      // that is dispatch
+    } else {
+      let localStorageCart = JSON.parse(
+        localStorage.getItem('LocalStorageCart')
+      )
+      localStorageCart.push(product)
+      localStorage.setItem('LocalStorageCart', JSON.stringify(localStorageCart))
+    }
   }
 
   render() {
@@ -48,7 +56,10 @@ class SingleProduct extends Component {
   }
 }
 
-const mapStateToProps = state => ({product: state.products.selectedProduct})
+const mapStateToProps = state => ({
+  product: state.products.selectedProduct,
+  isLoggedIn: !!state.user.id
+})
 
 const mapDispatchToProps = dispatch => ({
   getProduct: id => dispatch(gettingProduct(id)),
