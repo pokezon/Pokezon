@@ -2,10 +2,19 @@ import React, {Component} from 'react'
 import CartItem from './cartItem'
 import {connect} from 'react-redux'
 import {gettingCart} from '../store/cart'
+import Checkout from './checkout'
 
 class Cart extends Component {
+  state = {
+    checkout: false
+  }
+
   componentDidMount() {
     this.props.getCartItems()
+  }
+
+  toggleCheckout = () => {
+    this.setState(prevState => ({checkout: !prevState.checkout}))
   }
 
   render() {
@@ -16,7 +25,13 @@ class Cart extends Component {
           <CartItem item={item} key={item.id} />
         ))}
         <br />
-        <button className="btn btn-success">Checkout</button>
+        <button className="btn btn-success" onClick={this.toggleCheckout}>
+          Checkout
+        </button>
+        <br />
+        {this.state.checkout ? (
+          <Checkout cartItems={this.props.cartItems} />
+        ) : null}
       </div>
     )
   }
