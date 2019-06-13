@@ -19,9 +19,9 @@ class SingleProduct extends Component {
       )
     } else {
       return (
-        <div>
+        <div className="text-center">
           <h2>{product.name}</h2>
-          <img src={product.imageUrl} />
+          <img src={product.imageUrl} width="200" />
           <h2>The {product.type} Pokemon</h2>
           <h2>${product.price}</h2>
           <h2>{product.description}</h2>
