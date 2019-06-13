@@ -6,13 +6,13 @@ import {gettingCart} from '../store/cart'
 import products from '../store/products'
 
 class Cart extends Component {
-  UNSAFE_componentWillMount() {
+  componentDidMount() {
     if (this.props.isLoggedIn) {
       this.props.getCartItems()
     } else if (!localStorage.getItem('LocalStorageCart')) {
-        let items = []
-        localStorage.setItem('LocalStorageCart', JSON.stringify(items))
-      }
+      let items = []
+      localStorage.setItem('LocalStorageCart', JSON.stringify(items))
+    }
   }
 
   render() {
