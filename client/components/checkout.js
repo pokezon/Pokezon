@@ -3,10 +3,6 @@ import {connect} from 'react-redux'
 import {gettingCart} from '../store/cart'
 
 export class Checkout extends Component {
-  componentDidMount() {
-    this.props.getCartItems()
-  }
-
   render() {
     const totalMerchCost =
       this.props.cartItems.reduce(
@@ -31,12 +27,8 @@ export class Checkout extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  cartItems: state.cart.cartItems
-})
-
 const dispatchToProps = dispatch => ({
   getCartItems: () => dispatch(gettingCart())
 })
 
-export default connect(mapStateToProps, dispatchToProps)(Checkout)
+export default connect(null, dispatchToProps)(Checkout)

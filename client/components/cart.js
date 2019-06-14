@@ -5,7 +5,14 @@ import {connect} from 'react-redux'
 import {gettingCart} from '../store/cart'
 import products from '../store/products'
 
+import {Checkout} from './checkout'
+import {Link} from 'react-router-dom'
+
 class Cart extends Component {
+  state = {
+    checkout: false
+  }
+
   componentDidMount() {
     if (this.props.isLoggedIn) {
       this.props.getCartItems()
@@ -13,6 +20,10 @@ class Cart extends Component {
       let items = []
       localStorage.setItem('LocalStorageCart', JSON.stringify(items))
     }
+  }
+
+  toggleCheckout = () => {
+    this.setState(prevState => ({checkout: !prevState.checkout}))
   }
 
   render() {
@@ -24,7 +35,13 @@ class Cart extends Component {
         {cart.length ? '' : <h1>Looks like your cart is empty!</h1>}
         {cart.map(item => <CartItem item={item} key={item.id} />)}
         <br />
-        <button className="btn btn-success">Checkout</button>
+        <button className="btn btn-success text-white" onClick={this.toggleCheckout}>
+          Checkout
+        </button>
+        <br />
+        {this.state.checkout ? (
+          <Checkout cartItems={this.props.cartItems} />
+        ) : null}
       </div>
     )
   }
