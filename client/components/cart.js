@@ -20,14 +20,30 @@ class Cart extends Component {
   }
 
   render() {
+    const itemIdHashMap = {}
+    const reduceDups =
+      this.props.cartItems.reduce((accum, item) => {
+        if (itemIdHashMap[item.product.id] === undefined) {
+          itemIdHashMap[item.product.id] = true
+          return accum.concat(item)
+        } else {
+          const increaseQItem = accum.find(
+            obj => obj.product.id === item.product.id
+          )
+          increaseQItem.quantity += item.quantity
+        }
+        return accum
+      }, []) || []
+    console.log('------itemQuantity----', this.props.cartItems.state)
     return (
       <div className="text-center">
         <h1>Checkout</h1>
-        {this.props.cartItems.map(item => (
-          <CartItem item={item} key={item.id} />
-        ))}
+        {reduceDups.map(item => <CartItem item={item} key={item.id} />)}
         <br />
-        <button className="btn btn-success text-white" onClick={this.toggleCheckout}>
+        <button
+          className="btn btn-success text-white"
+          onClick={this.toggleCheckout}
+        >
           Checkout
         </button>
         <br />
