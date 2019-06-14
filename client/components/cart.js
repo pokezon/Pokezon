@@ -1,7 +1,9 @@
+/* eslint-disable react/no-unsafe */
 import React, {Component} from 'react'
 import CartItem from './cartItem'
 import {connect} from 'react-redux'
 import {gettingCart} from '../store/cart'
+import products from '../store/products'
 
 import {Checkout} from './checkout'
 import {Link} from 'react-router-dom'
@@ -12,7 +14,12 @@ class Cart extends Component {
   }
 
   componentDidMount() {
-    this.props.getCartItems()
+    if (this.props.isLoggedIn) {
+      this.props.getCartItems()
+    } else if (!localStorage.getItem('LocalStorageCart')) {
+      let items = []
+      localStorage.setItem('LocalStorageCart', JSON.stringify(items))
+    }
   }
 
   toggleCheckout = () => {
@@ -20,12 +27,13 @@ class Cart extends Component {
   }
 
   render() {
+    const cart = this.props.isLoggedIn
+      ? this.props.cartItems
+      : JSON.parse(localStorage.getItem('LocalStorageCart'))
     return (
       <div className="text-center">
-        <h1>Checkout</h1>
-        {this.props.cartItems.map(item => (
-          <CartItem item={item} key={item.id} />
-        ))}
+        {cart.length ? '' : <h1>Looks like your cart is empty!</h1>}
+        {cart.map(item => <CartItem item={item} key={item.id} />)}
         <br />
         <button className="btn btn-success text-white" onClick={this.toggleCheckout}>
           Checkout
@@ -39,7 +47,8 @@ class Cart extends Component {
   }
 }
 const mapStateToProps = state => ({
-  cartItems: state.cart.cartItems
+  cartItems: state.cart.cartItems,
+  isLoggedIn: !!state.user.id
 })
 
 const dispatchToProps = dispatch => ({
