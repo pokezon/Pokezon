@@ -13,7 +13,7 @@ class Cart extends Component {
     checkout: false
   }
 
-  componentDidMount() {
+  UNSAFE_componentWillMount() {
     if (this.props.isLoggedIn) {
       this.props.getCartItems()
     } else if (!localStorage.getItem('LocalStorageCart')) {
@@ -33,15 +33,22 @@ class Cart extends Component {
     return (
       <div className="text-center">
         {cart.length ? '' : <h1>Looks like your cart is empty!</h1>}
-        {cart.map(item => <CartItem item={item} key={item.id} />)}
+        {cart.map(item => (
+          <CartItem
+            item={item}
+            key={item.id}
+            isLoggedIn={this.props.isLoggedIn}
+          />
+        ))}
         <br />
-        <button className="btn btn-success text-white" onClick={this.toggleCheckout}>
+        <button
+          className="btn btn-success text-white"
+          onClick={this.toggleCheckout}
+        >
           Checkout
         </button>
         <br />
-        {this.state.checkout ? (
-          <Checkout cartItems={this.props.cartItems} />
-        ) : null}
+        {this.state.checkout ? <Checkout cartItems={cart} /> : null}
       </div>
     )
   }

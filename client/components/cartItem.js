@@ -16,7 +16,15 @@ class CartItem extends Component {
     // that is dispatch
   }
   removeItem = id => {
-    this.props.removeCartItem(id)
+    if (this.props.isLoggedIn) {
+      this.props.removeCartItem(id)
+    } else {
+      let localStorageCart = JSON.parse(
+        localStorage.getItem('LocalStorageCart')
+      )
+      localStorageCart = localStorageCart.filter(entry => entry.id !== id)
+      localStorage.setItem('LocalStorageCart', JSON.stringify(localStorageCart))
+    }
   }
 
   handleClick() {

@@ -17,7 +17,7 @@ class SingleProduct extends Component {
       let localStorageCart = JSON.parse(
         localStorage.getItem('LocalStorageCart')
       )
-      localStorageCart.push(product)
+      localStorageCart.push({id: localStorageCart.length, product: product})
       localStorage.setItem('LocalStorageCart', JSON.stringify(localStorageCart))
     }
   }
