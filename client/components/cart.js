@@ -12,13 +12,15 @@ class Cart extends Component {
   render() {
     return (
       <div className="text-center">
-        <h1>hello from cart.js</h1>
+        <h1>Checkout</h1>
         {this.props.cartItems.map(item => (
           <CartItem item={item} key={item.id} />
         ))}
         <br />
         <button className="btn btn-success" type="button">
-          <Link to="/checkout">Checkout</Link>
+          <Link to="/checkout" className="text-white">
+            Checkout
+          </Link>
         </button>
       </div>
     )
