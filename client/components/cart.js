@@ -2,7 +2,9 @@ import React, {Component} from 'react'
 import CartItem from './cartItem'
 import {connect} from 'react-redux'
 import {gettingCart} from '../store/cart'
-import Checkout from './checkout'
+
+import {Checkout} from './checkout'
+import {Link} from 'react-router-dom'
 
 class Cart extends Component {
   state = {
@@ -20,12 +22,12 @@ class Cart extends Component {
   render() {
     return (
       <div className="text-center">
-        <h1>hello from cart.js</h1>
+        <h1>Checkout</h1>
         {this.props.cartItems.map(item => (
           <CartItem item={item} key={item.id} />
         ))}
         <br />
-        <button className="btn btn-success" onClick={this.toggleCheckout}>
+        <button className="btn btn-success text-white" onClick={this.toggleCheckout}>
           Checkout
         </button>
         <br />

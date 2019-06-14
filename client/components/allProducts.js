@@ -14,8 +14,8 @@ class AllProducts extends Component {
           'WEBSITE SEIZED BY THE U.S. GOVERNMENT'
         ) : (
           <div>
-            <h2 className="text-center">Our Wonderful Collection</h2>
             <div className="container">
+              <h2 className="text-center">Our Wonderful Collection</h2>
               <div className="row">
                 {this.props.allProducts.map(product => {
                   return (

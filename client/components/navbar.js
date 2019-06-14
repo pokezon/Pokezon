@@ -9,29 +9,45 @@ const Navbar = ({handleClick, isLoggedIn}) => (
     <h1 id="brand-name" className="navbar-brand">
       pokezon.
     </h1>
-
-    <nav className="navbar navbar-inverse navbar-fixed-top">
-      {isLoggedIn ? (
-        <div>
-          {/* The navbar will show these links after you log in */}
-          <Link to="/home">Home</Link>
-          <Link to="/products">Our Pokemon</Link>
-          <Link to="/cart">Your Cart</Link>
-          <a href="#" onClick={handleClick}>
-            Logout
-          </a>
+    <nav className="navbar navbar-expand-sm bg-dark navbar-dark justify-content-end">
+      <div className="container">
+        <div className="navbar-header">
+          {isLoggedIn ? (
+            <div>
+              {/* The navbar will show these links after you log in */}
+              <Link to="/home" className="text-white bg-dark">
+                Home
+              </Link>
+              <Link to="/products" className="text-white bg-dark">
+                Our Pokemon
+              </Link>
+              <Link to="/cart" className="text-white bg-dark">
+                Your Cart
+              </Link>
+              <a href="#" onClick={handleClick} className="text-white bg-dark">
+                Logout
+              </a>
+            </div>
+          ) : (
+            <div>
+              {/* The navbar will show these links before you log in */}
+              <Link to="/login" className="text-white bg-dark">
+                Login
+              </Link>
+              <Link to="/signup" className="text-white bg-dark">
+                Sign Up
+              </Link>
+              <Link to="/products" className="text-white bg-dark">
+                Our Pokemon
+              </Link>
+              <Link to="/cart" className="text-white bg-dark">
+                Your Cart
+              </Link>
+            </div>
+          )}
         </div>
-      ) : (
-        <div>
-          {/* The navbar will show these links before you log in */}
-          <Link to="/login">Login</Link>
-          <Link to="/signup">Sign Up</Link>
-          <Link to="/products">Our Pokemon</Link>
-          <Link to="/cart">Your Cart</Link>
-        </div>
-      )}
+      </div>
     </nav>
-    <hr />
   </div>
 )
 
