@@ -23,7 +23,6 @@ class CartItem extends Component {
     this.setState({
       quantity: this.state.quantity + 1
     })
-    console.log(`Quantity is now ${this.state.quantity}`)
   }
 
   handleMinus() {
