@@ -36,3 +36,14 @@ form div {
   margin: 1em;
   display: inline-block;
 }
+
+h2 {
+  text-shadow: 1px 1px 2px black;
+}
+h3 {
+  text-shadow: 1px 1px 2px black;
+}
+
+p {
+  text-shadow: 1px 1px 2px black;
+}

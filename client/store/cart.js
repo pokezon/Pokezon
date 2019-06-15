@@ -11,6 +11,7 @@ const GET_ALL_CART_ITEMS = 'GET_ALL_CART_ITEMS'
 const ADD_CART_ITEM = 'ADD_CART_ITEM'
 const UPDATE_CART_ITEM_QUANTITY = 'UPDATE_CART_ITEM_QUANTITY'
 const REMOVE_CART_ITEM = 'REMOVE_CART_ITEM'
+const RESET_CART = 'RESET_CART'
 
 // ACTION CREATORS
 
@@ -19,12 +20,14 @@ const addCartItem = item => ({
   type: ADD_CART_ITEM,
   item
 })
-const updateCart = (id, quantity) => ({
+const updateCart = ({id, quantity}) => ({
   type: UPDATE_CART_ITEM_QUANTITY,
   id,
   quantity
 })
 const removeCartItem = id => ({type: REMOVE_CART_ITEM, id})
+
+const resetCart = () => ({type: RESET_CART})
 
 // THUNKS
 
@@ -39,7 +42,7 @@ export const gettingCart = () => async dispatch => {
 
 export const addingCartItem = product => async dispatch => {
   try {
-    const response = await axios.post(`/api/cart`, product)
+    const response = await axios.post(`/api/cart`, {...product, quantity: 1})
     const item = await axios.get(`/api/cart/${response.data.id}`)
     dispatch(addCartItem(item.data))
   } catch (error) {
@@ -60,6 +63,14 @@ export const removingCartItem = id => async dispatch => {
   try {
     await axios.delete(`/api/cart/${id}`)
     dispatch(removeCartItem(id))
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+export const resettingCart = () => dispatch => {
+  try {
+    dispatch(resetCart())
   } catch (error) {
     console.error(error)
   }
@@ -91,6 +102,8 @@ export default function(state = initialState, action) {
         item => item.id !== action.id
       )
       break
+    case RESET_CART:
+      return initialState
     default:
       return state
   }

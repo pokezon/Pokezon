@@ -46,13 +46,16 @@ router.post('/', async (req, res, next) => {
 
 router.put('/:id', async (req, res, next) => {
   try {
-    const [numberOfAffectedRows, affectedRows] = await Order.update(req.body, {
-      where: {
-        id: +req.params.id
-      },
-      returning: true, // needed for affectedRows to be populated
-      plain: true // makes sure that the returned instances are just plain objects
-    })
+    const [numberOfAffectedRows, affectedRows] = await Order.update(
+      {...req.body, userId: req.user.id},
+      {
+        where: {
+          id: +req.params.id
+        },
+        returning: true, // needed for affectedRows to be populated
+        plain: true // makes sure that the returned instances are just plain objects
+      }
+    )
     if (!affectedRows) {
       res.sendStatus(404)
     } else {

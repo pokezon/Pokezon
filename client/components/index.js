@@ -11,3 +11,5 @@ export {default as SingleProduct} from './singleProduct'
 export {default as Cart} from './cart'
 export {default as Checkout} from './checkout'
 export {default as SettingsForm} from './settingsForm'
+export {default as Featured} from './featured'
+

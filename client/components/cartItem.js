@@ -14,12 +14,17 @@ class CartItem extends Component {
   componentDidMount() {
     this.setState({quantity: this.props.item.quantity})
   }
-  addItem = item => {
-    this.props.addCartItem(item)
-    // that is dispatch
-  }
+
   removeItem = id => {
-    this.props.removeCartItem(id)
+    if (this.props.isLoggedIn) {
+      this.props.removeCartItem(id)
+    } else {
+      let localStorageCart = JSON.parse(
+        localStorage.getItem('LocalStorageCart')
+      )
+      localStorageCart = localStorageCart.filter(entry => entry.id !== id)
+      localStorage.setItem('LocalStorageCart', JSON.stringify(localStorageCart))
+    }
   }
 
   handleClick() {
@@ -61,8 +66,7 @@ class CartItem extends Component {
 
 const dispatchToProps = dispatch => {
   return {
-    removeCartItem: id => dispatch(removingCartItem(id)),
-    addCartItem: item => dispatch(addingCartItem(item))
+    removeCartItem: id => dispatch(removingCartItem(id))
   }
 }
 

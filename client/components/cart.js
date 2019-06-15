@@ -1,44 +1,78 @@
+/* eslint-disable react/no-unsafe */
 import React, {Component} from 'react'
 import CartItem from './cartItem'
 import {connect} from 'react-redux'
 import {gettingCart} from '../store/cart'
+import products from '../store/products'
 
 import {Checkout} from './checkout'
 import {Link} from 'react-router-dom'
 
 class Cart extends Component {
   state = {
-    checkout: false
+    checkout: false,
+    localCart: []
   }
 
   componentDidMount() {
-    this.props.getCartItems()
+    if (this.props.isLoggedIn) {
+      this.props.getCartItems()
+    } else {
+      this.setState({
+        localCart: JSON.parse(localStorage.getItem('LocalStorageCart'))
+      })
+    }
   }
 
   toggleCheckout = () => {
     this.setState(prevState => ({checkout: !prevState.checkout}))
   }
 
-  render() {
+  combinedSameProductQuants = cartItems => {
     const itemIdHashMap = {}
-    const reduceDups =
-      this.props.cartItems.reduce((accum, item) => {
-        if (itemIdHashMap[item.product.id] === undefined) {
-          itemIdHashMap[item.product.id] = true
-          return accum.concat(item)
-        } else {
-          const increaseQItem = accum.find(
-            obj => obj.product.id === item.product.id
-          )
-          increaseQItem.quantity += item.quantity
-        }
-        return accum
-      }, []) || []
-    console.log('------itemQuantity----', this.props.cartItems.state)
+    return cartItems.reduce((accum, item) => {
+      if (itemIdHashMap[item.product.id] === undefined) {
+        itemIdHashMap[item.product.id] = true
+        return accum.concat(item)
+      } else {
+        const increaseQItem = accum.find(
+          obj => obj.product.id === item.product.id
+        )
+        increaseQItem.quantity += item.quantity
+      }
+      return accum
+    }, [])
+  }
+
+  render() {
+    // debugger
+    // const itemIdHashMap = {}
+    // const reduceDups = this.props.cartItems.reduce((accum, item) => {
+    //   if (itemIdHashMap[item.product.id] === undefined) {
+    //     itemIdHashMap[item.product.id] = true
+    //     return accum.concat(item)
+    //   } else {
+    //     const increaseQItem = accum.find(
+    //       obj => obj.product.id === item.product.id
+    //     )
+    //     increaseQItem.quantity += item.quantity
+    //   }
+    //   return accum
+    // }, [])
+    let cart = this.props.isLoggedIn
+      ? this.props.cartItems
+      : this.state.localCart
+    cart = this.combinedSameProductQuants(cart)
     return (
       <div className="text-center">
-        <h1>Checkout</h1>
-        {reduceDups.map(item => <CartItem item={item} key={item.id} />)}
+        {cart.length ? '' : <h1>Looks like your cart is empty!</h1>}
+        {cart.map(item => (
+          <CartItem
+            item={item}
+            key={item.id}
+            isLoggedIn={this.props.isLoggedIn}
+          />
+        ))}
         <br />
         <button
           className="btn btn-success text-white"
@@ -47,15 +81,14 @@ class Cart extends Component {
           Checkout
         </button>
         <br />
-        {this.state.checkout ? (
-          <Checkout cartItems={this.props.cartItems} />
-        ) : null}
+        {this.state.checkout ? <Checkout cartItems={cart} /> : null}
       </div>
     )
   }
 }
 const mapStateToProps = state => ({
-  cartItems: state.cart.cartItems
+  cartItems: state.cart.cartItems,
+  isLoggedIn: !!state.user.id
 })
 
 const dispatchToProps = dispatch => ({

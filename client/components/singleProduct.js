@@ -2,16 +2,37 @@ import React, {Component} from 'react'
 import {gettingProduct} from '../store/products'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
-import {addingCartItem} from '../store/cart'
+import {addingCartItem, gettingCart, updatingCartItem} from '../store/cart'
 
 class SingleProduct extends Component {
   componentDidMount() {
     this.props.getProduct(this.props.match.params.id)
+    if (this.props.isLoggedIn) {
+      this.props.gettingCart()
+    }
   }
 
   addItem = product => {
-    this.props.addCartItem(product)
-    // that is dispatch
+    if (this.props.isLoggedIn) {
+      const foundItemInCart = this.props.cart.find(
+        cartItem => cartItem.productId === product.id
+      )
+      if (foundItemInCart) {
+        this.props.updatingCartItem({
+          id: foundItemInCart.id,
+          quantity: foundItemInCart.quantity + 1
+        })
+      } else {
+        this.props.addCartItem(product)
+      }
+      // that is dispatch
+    } else {
+      let localStorageCart = JSON.parse(
+        localStorage.getItem('LocalStorageCart')
+      )
+      localStorageCart.push({id: localStorageCart.length, product: product})
+      localStorage.setItem('LocalStorageCart', JSON.stringify(localStorageCart))
+    }
   }
 
   render() {
@@ -48,11 +69,17 @@ class SingleProduct extends Component {
   }
 }
 
-const mapStateToProps = state => ({product: state.products.selectedProduct})
+const mapStateToProps = state => ({
+  product: state.products.selectedProduct,
+  isLoggedIn: !!state.user.id,
+  cart: state.cart.cartItems
+})
 
 const mapDispatchToProps = dispatch => ({
   getProduct: id => dispatch(gettingProduct(id)),
-  addCartItem: product => dispatch(addingCartItem(product))
+  addCartItem: product => dispatch(addingCartItem(product)),
+  gettingCart: () => dispatch(gettingCart()),
+  updatingCartItem: item => dispatch(updatingCartItem(item))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(SingleProduct)
