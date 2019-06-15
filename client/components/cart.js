@@ -29,8 +29,22 @@ class Cart extends Component {
   }
 
   render() {
+    const itemIdHashMap = {}
+    const reduceDups =
+      this.props.cartItems.reduce((accum, item) => {
+        if (itemIdHashMap[item.product.id] === undefined) {
+          itemIdHashMap[item.product.id] = true
+          return accum.concat(item)
+        } else {
+          const increaseQItem = accum.find(
+            obj => obj.product.id === item.product.id
+          )
+          increaseQItem.quantity += item.quantity
+        }
+        return accum
+      }, [])
     const cart = this.props.isLoggedIn
-      ? this.props.cartItems
+      ? reduceDups
       : this.state.localCart
     return (
       <div className="text-center">

@@ -11,6 +11,9 @@ class CartItem extends Component {
     this.handleClick = this.handleClick.bind(this)
     this.handleMinus = this.handleMinus.bind(this)
   }
+  componentDidMount() {
+    this.setState({quantity: this.props.item.quantity})
+  }
   addItem = item => {
     this.props.addCartItem(item)
     // that is dispatch
