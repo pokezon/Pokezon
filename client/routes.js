@@ -17,6 +17,10 @@ import {me} from './store'
 class Routes extends Component {
   componentDidMount() {
     this.props.loadInitialData()
+    if (!localStorage.getItem('LocalStorageCart')) {
+      let items = []
+      localStorage.setItem('LocalStorageCart', JSON.stringify(items))
+    }
   }
 
   render() {

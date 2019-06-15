@@ -10,15 +10,17 @@ import {Link} from 'react-router-dom'
 
 class Cart extends Component {
   state = {
-    checkout: false
+    checkout: false,
+    localCart: []
   }
 
   componentDidMount() {
     if (this.props.isLoggedIn) {
       this.props.getCartItems()
-    } else if (!localStorage.getItem('LocalStorageCart')) {
-      let items = []
-      localStorage.setItem('LocalStorageCart', JSON.stringify(items))
+    } else {
+      this.setState({
+        localCart: JSON.parse(localStorage.getItem('LocalStorageCart'))
+      })
     }
   }
 
@@ -43,11 +45,17 @@ class Cart extends Component {
       }, [])
     const cart = this.props.isLoggedIn
       ? reduceDups
-      : JSON.parse(localStorage.getItem('LocalStorageCart'))
+      : this.state.localCart
     return (
       <div className="text-center">
         {cart.length ? '' : <h1>Looks like your cart is empty!</h1>}
-        {cart.map(item => <CartItem item={item} key={item.id} />)}
+        {cart.map(item => (
+          <CartItem
+            item={item}
+            key={item.id}
+            isLoggedIn={this.props.isLoggedIn}
+          />
+        ))}
         <br />
         <button
           className="btn btn-success text-white"
@@ -56,9 +64,7 @@ class Cart extends Component {
           Checkout
         </button>
         <br />
-        {this.state.checkout ? (
-          <Checkout cartItems={this.props.cartItems} />
-        ) : null}
+        {this.state.checkout ? <Checkout cartItems={cart} /> : null}
       </div>
     )
   }
