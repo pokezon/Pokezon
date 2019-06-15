@@ -15,8 +15,11 @@ const Navbar = ({handleLogOut, isLoggedIn, cart}) => (
           {isLoggedIn ? (
             <div>
               {/* The navbar will show these links after you log in */}
-              <Link to="/home" className="text-white bg-dark">
+              <Link to="/" className="text-white bg-dark">
                 Home
+              </Link>
+              <Link to="/home" className="text-white bg-dark">
+                Your Profile
               </Link>
               <Link to="/products" className="text-white bg-dark">
                 Our Pokemon
@@ -36,6 +39,9 @@ const Navbar = ({handleLogOut, isLoggedIn, cart}) => (
               </Link>
               <Link to="/signup" className="text-white bg-dark">
                 Sign Up
+              </Link>
+              <Link to="/" className="text-white bg-dark">
+                Home
               </Link>
               <Link to="/products" className="text-white bg-dark">
                 Our Pokemon
