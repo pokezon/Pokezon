@@ -20,7 +20,7 @@ const addCartItem = item => ({
   type: ADD_CART_ITEM,
   item
 })
-const updateCart = (id, quantity) => ({
+const updateCart = ({id, quantity}) => ({
   type: UPDATE_CART_ITEM_QUANTITY,
   id,
   quantity
