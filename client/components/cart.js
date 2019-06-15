@@ -10,15 +10,17 @@ import {Link} from 'react-router-dom'
 
 class Cart extends Component {
   state = {
-    checkout: false
+    checkout: false,
+    localCart: []
   }
 
-  UNSAFE_componentWillMount() {
+  componentDidMount() {
     if (this.props.isLoggedIn) {
       this.props.getCartItems()
-    } else if (!localStorage.getItem('LocalStorageCart')) {
-      let items = []
-      localStorage.setItem('LocalStorageCart', JSON.stringify(items))
+    } else {
+      this.setState({
+        localCart: JSON.parse(localStorage.getItem('LocalStorageCart'))
+      })
     }
   }
 
@@ -29,7 +31,7 @@ class Cart extends Component {
   render() {
     const cart = this.props.isLoggedIn
       ? this.props.cartItems
-      : JSON.parse(localStorage.getItem('LocalStorageCart'))
+      : this.state.localCart
     return (
       <div className="text-center">
         {cart.length ? '' : <h1>Looks like your cart is empty!</h1>}
