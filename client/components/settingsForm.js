@@ -5,7 +5,8 @@ export default class SettingsForm extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      username: '',
+      currentUsername: '',
+      newUsername: '',
       password: ''
     }
     this.handleChange = this.handleChange.bind(this)
@@ -22,22 +23,39 @@ export default class SettingsForm extends Component {
     event.preventDefault()
     await axios.put('/api/home/settings', this.state)
     this.setState({
-      username: ''
+      currentUsername: '',
+      newUsername: ''
     })
   }
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <h1>Change Username</h1>
-        <label htmlFor="username">Username: </label>
+      <form onSubmit={this.handleSubmit} align="center">
+        <br />
+        <h2>Change Username</h2>
+
+        <label htmlFor="currentUsername">Current Username: </label>
         <input
           type="text"
-          name="username"
-          value={this.state.username}
+          name="currentUsername"
+          value={this.state.currentUsername}
           onChange={this.handleChange}
           required
         />
+
+        <br />
+
+        <label htmlFor="newUsername">New Username: </label>
+        <input
+          type="text"
+          name="newUsername"
+          value={this.state.newUsername}
+          onChange={this.handleChange}
+          required
+        />
+
+        <br />
+
         <input type="submit" className="btn btn-primary" />
       </form>
     )
