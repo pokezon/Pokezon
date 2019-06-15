@@ -12,12 +12,15 @@ import {
   Featured
 } from './components'
 import {me} from './store'
+import {gettingCart} from './store/cart'
+
 /**
  * COMPONENT
  */
 class Routes extends Component {
-  componentDidMount() {
-    this.props.loadInitialData()
+  async componentDidMount() {
+    await this.props.loadInitialData()
+    this.props.gettingCart()
     if (!localStorage.getItem('LocalStorageCart')) {
       let items = []
       localStorage.setItem('LocalStorageCart', JSON.stringify(items))
@@ -65,6 +68,9 @@ const mapDispatch = dispatch => {
   return {
     loadInitialData() {
       dispatch(me())
+    },
+    gettingCart() {
+      dispatch(gettingCart())
     }
   }
 }

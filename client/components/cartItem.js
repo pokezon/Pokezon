@@ -14,10 +14,7 @@ class CartItem extends Component {
   componentDidMount() {
     this.setState({quantity: this.props.item.quantity})
   }
-  addItem = item => {
-    this.props.addCartItem(item)
-    // that is dispatch
-  }
+
   removeItem = id => {
     if (this.props.isLoggedIn) {
       this.props.removeCartItem(id)
@@ -69,8 +66,7 @@ class CartItem extends Component {
 
 const dispatchToProps = dispatch => {
   return {
-    removeCartItem: id => dispatch(removingCartItem(id)),
-    addCartItem: item => dispatch(addingCartItem(item))
+    removeCartItem: id => dispatch(removingCartItem(id))
   }
 }
 

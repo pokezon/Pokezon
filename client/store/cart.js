@@ -20,7 +20,7 @@ const addCartItem = item => ({
   type: ADD_CART_ITEM,
   item
 })
-const updateCart = (id, quantity) => ({
+const updateCart = ({id, quantity}) => ({
   type: UPDATE_CART_ITEM_QUANTITY,
   id,
   quantity
@@ -42,7 +42,7 @@ export const gettingCart = () => async dispatch => {
 
 export const addingCartItem = product => async dispatch => {
   try {
-    const response = await axios.post(`/api/cart`, product)
+    const response = await axios.post(`/api/cart`, {...product, quantity: 1})
     const item = await axios.get(`/api/cart/${response.data.id}`)
     dispatch(addCartItem(item.data))
   } catch (error) {
