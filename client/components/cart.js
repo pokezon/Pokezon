@@ -27,15 +27,32 @@ class Cart extends Component {
   }
 
   render() {
+    const itemIdHashMap = {}
+    const reduceDups =
+      this.props.cartItems.reduce((accum, item) => {
+        if (itemIdHashMap[item.product.id] === undefined) {
+          itemIdHashMap[item.product.id] = true
+          return accum.concat(item)
+        } else {
+          const increaseQItem = accum.find(
+            obj => obj.product.id === item.product.id
+          )
+          increaseQItem.quantity += item.quantity
+        }
+        return accum
+      }, [])
     const cart = this.props.isLoggedIn
-      ? this.props.cartItems
+      ? reduceDups
       : JSON.parse(localStorage.getItem('LocalStorageCart'))
     return (
       <div className="text-center">
         {cart.length ? '' : <h1>Looks like your cart is empty!</h1>}
         {cart.map(item => <CartItem item={item} key={item.id} />)}
         <br />
-        <button className="btn btn-success text-white" onClick={this.toggleCheckout}>
+        <button
+          className="btn btn-success text-white"
+          onClick={this.toggleCheckout}
+        >
           Checkout
         </button>
         <br />

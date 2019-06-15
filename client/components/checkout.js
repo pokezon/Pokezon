@@ -1,9 +1,11 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {gettingCart} from '../store/cart'
+import CartItem from './cartItem'
 
 export class Checkout extends Component {
   render() {
+    console.log('----- CartItem -----', CartItem)
     const totalMerchCost =
       this.props.cartItems.reduce(
         (accum, {quantity, product}) => accum + quantity * product.price,
