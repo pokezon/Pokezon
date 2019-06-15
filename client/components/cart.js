@@ -28,24 +28,41 @@ class Cart extends Component {
     this.setState(prevState => ({checkout: !prevState.checkout}))
   }
 
-  render() {
+  combinedSameProductQuants = cartItems => {
     const itemIdHashMap = {}
-    const reduceDups =
-      this.props.cartItems.reduce((accum, item) => {
-        if (itemIdHashMap[item.product.id] === undefined) {
-          itemIdHashMap[item.product.id] = true
-          return accum.concat(item)
-        } else {
-          const increaseQItem = accum.find(
-            obj => obj.product.id === item.product.id
-          )
-          increaseQItem.quantity += item.quantity
-        }
-        return accum
-      }, [])
-    const cart = this.props.isLoggedIn
-      ? reduceDups
+    return cartItems.reduce((accum, item) => {
+      if (itemIdHashMap[item.product.id] === undefined) {
+        itemIdHashMap[item.product.id] = true
+        return accum.concat(item)
+      } else {
+        const increaseQItem = accum.find(
+          obj => obj.product.id === item.product.id
+        )
+        increaseQItem.quantity += item.quantity
+      }
+      return accum
+    }, [])
+  }
+
+  render() {
+    // debugger
+    // const itemIdHashMap = {}
+    // const reduceDups = this.props.cartItems.reduce((accum, item) => {
+    //   if (itemIdHashMap[item.product.id] === undefined) {
+    //     itemIdHashMap[item.product.id] = true
+    //     return accum.concat(item)
+    //   } else {
+    //     const increaseQItem = accum.find(
+    //       obj => obj.product.id === item.product.id
+    //     )
+    //     increaseQItem.quantity += item.quantity
+    //   }
+    //   return accum
+    // }, [])
+    let cart = this.props.isLoggedIn
+      ? this.props.cartItems
       : this.state.localCart
+    cart = this.combinedSameProductQuants(cart)
     return (
       <div className="text-center">
         {cart.length ? '' : <h1>Looks like your cart is empty!</h1>}
