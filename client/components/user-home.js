@@ -2,12 +2,20 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
+import SettingsForm from './settingsForm'
 
 /**
  * COMPONENT
  */
+
+// function runSetting (id) {
+//   return (
+//   <SettingsForm userId={id}/>
+//   )
+// }
+
 export const UserHome = props => {
-  const {username} = props
+  const {username, id} = props
 
   return (
     <div className="text-center">
@@ -34,7 +42,8 @@ export const UserHome = props => {
  */
 const mapState = state => {
   return {
-    username: state.user.username
+    username: state.user.username,
+    id: state.user.id
   }
 }
 

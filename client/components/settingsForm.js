@@ -2,8 +2,8 @@ import React, {Component} from 'react'
 import axios from 'axios'
 
 export default class SettingsForm extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       username: '',
       password: ''
@@ -21,7 +21,6 @@ export default class SettingsForm extends Component {
   async handleSubmit(event) {
     event.preventDefault()
     await axios.put('/api/home/settings', this.state)
-    console.log('handlesubmit', this.state)
     this.setState({
       username: ''
     })
