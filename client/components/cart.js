@@ -4,9 +4,7 @@ import CartItem from './cartItem'
 import {connect} from 'react-redux'
 import {gettingCart, updatingCartItem} from '../store/cart'
 import products from '../store/products'
-
 import {Checkout} from './checkout'
-import {Link} from 'react-router-dom'
 
 const crypto = require('crypto')
 
@@ -41,6 +39,18 @@ class Cart extends Component {
       })
     )
   }
+  
+  deleteLocalCartItem = id => {
+    const {localCart} = this.state
+    this.setState(prevState => ({
+      checkout: false,
+      localCart: prevState.localCart.filter(item => item.id !== id)
+    }))
+    localStorage.setItem(
+      'LocalStorageCart',
+      JSON.stringify(localCart.filter(item => item.id !== id))
+    )
+  }
 
   combinedSameProductQuants = cartItems => {
     const itemIdHashMap = {}
@@ -59,20 +69,6 @@ class Cart extends Component {
   }
 
   render() {
-    // debugger
-    // const itemIdHashMap = {}
-    // const reduceDups = this.props.cartItems.reduce((accum, item) => {
-    //   if (itemIdHashMap[item.product.id] === undefined) {
-    //     itemIdHashMap[item.product.id] = true
-    //     return accum.concat(item)
-    //   } else {
-    //     const increaseQItem = accum.find(
-    //       obj => obj.product.id === item.product.id
-    //     )
-    //     increaseQItem.quantity += item.quantity
-    //   }
-    //   return accum
-    // }, [])
     let cart = this.props.isLoggedIn
       ? this.props.cartItems
       : this.state.localCart
@@ -85,12 +81,16 @@ class Cart extends Component {
             item={item}
             key={item.id}
             isLoggedIn={this.props.isLoggedIn}
+            checkout={this.state.checkout}
+            deleteLocalCartItem={this.deleteLocalCartItem}
+            // resetLocalCart={this.resetLocalCart}
           />
         ))}
         <br />
         <button
           className="btn btn-success text-white"
           onClick={this.toggleCheckout}
+          type="button"
         >
           Checkout
         </button>

@@ -30,7 +30,28 @@ class SingleProduct extends Component {
       let localStorageCart = JSON.parse(
         localStorage.getItem('LocalStorageCart')
       )
-      localStorageCart.push({id: localStorageCart.length, product: product})
+      const foundItemInCart = localStorageCart.find(
+        cartItem => cartItem.product.id === product.id
+      )
+      if (foundItemInCart) {
+        localStorageCart = localStorageCart.map(item => {
+          if (item.id === foundItemInCart.id) {
+            return {
+              id: item.id,
+              product: product,
+              quantity: 1 + foundItemInCart.quantity
+            }
+          }
+          return item
+        })
+      } else {
+        localStorageCart.push({
+          id: localStorageCart.length,
+          product: product,
+          quantity: 1
+        })
+      }
+
       localStorage.setItem('LocalStorageCart', JSON.stringify(localStorageCart))
     }
   }
@@ -72,13 +93,16 @@ class SingleProduct extends Component {
                 <button
                   className="btn btn-primary"
                   onClick={() => this.addItem(product)}
+                  type="button"
                 >
                   Add To Cart
                 </button>
               </div>
               <br />
               <Link to="/products">
-                <button className="btn btn-dark">Back to All Products </button>
+                <button className="btn btn-dark" type="button">
+                  Back to All Products{' '}
+                </button>
               </Link>
             </div>
           </div>
