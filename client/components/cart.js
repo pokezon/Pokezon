@@ -3,10 +3,7 @@ import React, {Component} from 'react'
 import CartItem from './cartItem'
 import {connect} from 'react-redux'
 import {gettingCart} from '../store/cart'
-import products from '../store/products'
-
 import {Checkout} from './checkout'
-import {Link} from 'react-router-dom'
 
 class Cart extends Component {
   state = {
@@ -45,20 +42,6 @@ class Cart extends Component {
   }
 
   render() {
-    // debugger
-    // const itemIdHashMap = {}
-    // const reduceDups = this.props.cartItems.reduce((accum, item) => {
-    //   if (itemIdHashMap[item.product.id] === undefined) {
-    //     itemIdHashMap[item.product.id] = true
-    //     return accum.concat(item)
-    //   } else {
-    //     const increaseQItem = accum.find(
-    //       obj => obj.product.id === item.product.id
-    //     )
-    //     increaseQItem.quantity += item.quantity
-    //   }
-    //   return accum
-    // }, [])
     let cart = this.props.isLoggedIn
       ? this.props.cartItems
       : this.state.localCart
