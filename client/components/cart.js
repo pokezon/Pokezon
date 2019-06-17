@@ -61,6 +61,7 @@ class Cart extends Component {
         <button
           className="btn btn-success text-white"
           onClick={this.toggleCheckout}
+          type="button"
         >
           Checkout
         </button>
