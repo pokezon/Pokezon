@@ -14,17 +14,39 @@ class AllProducts extends Component {
           'WEBSITE SEIZED BY THE U.S. GOVERNMENT'
         ) : (
           <div>
+            <br />
             <div className="container">
-              <h2 className="text-center">Our Wonderful Collection</h2>
+              {/* <h2 className="text-center">Our Wonderful Collection</h2> */}
               <div className="row">
                 {this.props.allProducts.map(product => {
                   return (
-                    <div key={product.id} className="col-lg-4 col-sm-6">
+                    <div key={product.id} className="eachProduct">
+                      <br />
                       <div className="thumbnail">
                         <Link to={`/products/${product.id}`}>
-                          <img src={product.imageUrl} width="100" />
-                          <h4>{product.name}</h4>
+                          <img src={product.imageUrl} width="150" />
                         </Link>
+                        <br />
+                        <div className="thumbnailInfo">
+                          <h4 align="center">{product.name}</h4>
+                          <p align="center">The {product.type} Pokémon</p>
+                          <h5 align="center">
+                            <img
+                              src="https://cdn0.iconfinder.com/data/icons/pokemon-go-vol-1/135/_Coin-512.png"
+                              width="30"
+                            />${product.price}
+                          </h5>
+                          {/* <img src='https://static.thenounproject.com/png/551641-200.png' width='50'/> */}
+                          <div align="center">
+                            <img
+                              src="https://i.ya-webdesign.com/images/open-pokeball-png-8.png"
+                              width="40"
+                            />
+                            <button className="btn btn-primary">
+                              Add to Cart
+                            </button>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   )

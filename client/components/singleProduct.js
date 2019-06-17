@@ -45,24 +45,43 @@ class SingleProduct extends Component {
       )
     } else {
       return (
-        <div className="text-center">
-          <h2>{product.name}</h2>
-          <img src={product.imageUrl} width="200" />
-          <h2>The {product.type} Pokemon</h2>
-          <h4>${product.price}</h4>
-          <h3>{product.description}</h3>
-          <div>
-            <button
-              className="btn btn-primary"
-              onClick={() => this.addItem(product)}
-            >
-              Add To Cart
-            </button>
-          </div>
+        <div align="center">
           <br />
-          <Link to="/products">
-            <button className="btn btn-dark">Back to All Products </button>
-          </Link>
+          <br />
+          <div className="singleProductContainer">
+            <div className="singleProductImage">
+              <img src={product.imageUrl} width="500" />
+            </div>
+            <div className="singleProductInfoBox">
+              <h1>
+                {product.name}: The {product.type} Pokémon
+              </h1>
+              <h3>
+                <img
+                  src="https://cdn0.iconfinder.com/data/icons/pokemon-go-vol-1/135/_Coin-512.png"
+                  width="50"
+                />${product.price}
+              </h3>
+              <h4>{product.description}</h4>
+              <div>
+                <br />
+                <img
+                  src="https://i.ya-webdesign.com/images/open-pokeball-png-8.png"
+                  width="60"
+                />
+                <button
+                  className="btn btn-primary"
+                  onClick={() => this.addItem(product)}
+                >
+                  Add To Cart
+                </button>
+              </div>
+              <br />
+              <Link to="/products">
+                <button className="btn btn-dark">Back to All Products </button>
+              </Link>
+            </div>
+          </div>
         </div>
       )
     }
