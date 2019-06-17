@@ -22,7 +22,7 @@ class CartItem extends Component {
       )
       localStorageCart = localStorageCart.filter(entry => entry.id !== id)
       localStorage.setItem('LocalStorageCart', JSON.stringify(localStorageCart))
-      this.props.resetLocalCart()
+      this.props.deleteLocalCartItem(id)
     }
   }
 
