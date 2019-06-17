@@ -25,6 +25,24 @@ class Cart extends Component {
     this.setState(prevState => ({checkout: !prevState.checkout}))
   }
 
+  deleteLocalCartItem = id => {
+    const {localCart} = this.state
+    this.setState(prevState => ({
+      checkout: false,
+      localCart: prevState.localCart.filter(item => item.id !== id)
+    }))
+    localStorage.setItem(
+      'LocalStorageCart',
+      JSON.stringify(localCart.filter(item => item.id !== id))
+    )
+  }
+
+  // resetLocalCart = () => {
+  //   this.setState({
+  //     localCart: []
+  //   })
+  // }
+
   combinedSameProductQuants = cartItems => {
     const itemIdHashMap = {}
     return cartItems.reduce((accum, item) => {
@@ -55,6 +73,8 @@ class Cart extends Component {
             key={item.id}
             isLoggedIn={this.props.isLoggedIn}
             checkout={this.state.checkout}
+            deleteLocalCartItem={this.deleteLocalCartItem}
+            // resetLocalCart={this.resetLocalCart}
           />
         ))}
         <br />
