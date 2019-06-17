@@ -2,7 +2,8 @@ import axios from 'axios'
 
 // THIS IS INITIAL STATE
 const initialState = {
-  cartItems: []
+  cartItems: [],
+  orderHistory: []
 }
 
 // ACTION TYPE

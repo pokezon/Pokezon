@@ -23,6 +23,25 @@ router.get('/', async (req, res, next) => {
   }
 })
 
+router.get('/history', async (req, res, next) => {
+  try {
+    if (req.user) {
+      const cart = await Order.findAll({
+        where: {
+          userId: req.user.id,
+          completedFlag: true
+        },
+        include: [{model: Product}]
+      })
+      res.json(cart)
+    } else {
+      res.sendStatus(401)
+    }
+  } catch (error) {
+    next(error)
+  }
+})
+
 router.get('/:id', async (req, res, next) => {
   try {
     if (req.user) {
