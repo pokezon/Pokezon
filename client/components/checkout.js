@@ -24,7 +24,9 @@ export class Checkout extends Component {
         </div>
         <div>Shipping Details:</div>
         <div>
-          <form onSubmit={this.props.confirmCheckout(this.props.cartItems)}>
+          <form
+            onSubmit={() => this.props.confirmCheckout(this.props.cartItems)}
+          >
             <div className="form-row">
               <label htmlFor="inputName">Recipient Name:</label>
               <input
