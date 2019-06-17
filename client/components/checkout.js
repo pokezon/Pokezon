@@ -17,13 +17,75 @@ export class Checkout extends Component {
       <>
         CheckoutPage
         <div>
-          Metch Details
-          <p>merch: ${totalMerchCost}</p>
-          <p>tax: ${salesTax}</p>
-          <p>total: ${totalPrice}</p>
+          Merchandise Details:
+          <p>Merch sub-total: ${totalMerchCost}</p>
+          <p>Tax: ${salesTax}</p>
+          <p>Total: ${totalPrice}</p>
         </div>
-        <div>Shipping Details</div>
-        <p>Need to add a form for inputing shipping addess and pmt info</p>
+        <div>Shipping Details:</div>
+        <div>
+          <form>
+            <div className="form-row">
+              <label htmlFor="inputName">Recipient Name:</label>
+              <input
+                type="text"
+                className="form-control"
+                id="inputName"
+                placeholder="Recipient Name"
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="inputAddress">Address</label>
+              <input
+                type="text"
+                className="form-control"
+                id="inputAddress"
+                placeholder="1234 Main St"
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="inputAddress2">Address 2</label>
+              <input
+                type="text"
+                className="form-control"
+                id="inputAddress2"
+                placeholder="Apartment, studio, or floor"
+              />
+            </div>
+            <div className="form-row">
+              <div className="form-group col-md-6">
+                <label htmlFor="inputCity">City</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="inputCity"
+                  placeholder="City"
+                />
+              </div>
+              <div className="form-group col-md-4">
+                <label htmlFor="inputState">State</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="inputState"
+                  placeholder="State"
+                />
+              </div>
+              <div className="form-group col-md-2">
+                <label htmlFor="inputZip">Zip</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="inputZip"
+                  placeholder="Zip Code"
+                />
+              </div>
+            </div>
+            <button type="submit" className="btn btn-primary">
+              Confirm
+            </button>
+          </form>
+        </div>
       </>
     )
   }
