@@ -37,7 +37,7 @@ class SingleProduct extends Component {
         localStorageCart = localStorageCart.map(item => {
           if (item.id === foundItemInCart.id) {
             return {
-              id: localStorageCart.length,
+              id: item.id,
               product: product,
               quantity: 1 + foundItemInCart.quantity
             }
