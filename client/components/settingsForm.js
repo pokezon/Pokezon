@@ -24,7 +24,8 @@ export default class SettingsForm extends Component {
     await axios.put('/api/home/settings', this.state)
     this.setState({
       currentUsername: '',
-      newUsername: ''
+      newUsername: '',
+      password: ''
     })
   }
 
@@ -39,6 +40,17 @@ export default class SettingsForm extends Component {
           type="text"
           name="currentUsername"
           value={this.state.currentUsername}
+          onChange={this.handleChange}
+          required
+        />
+
+        <br />
+
+        <label htmlFor="password">Password: </label>
+        <input
+          type="text"
+          name="password"
+          value={this.state.password}
           onChange={this.handleChange}
           required
         />
