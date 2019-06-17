@@ -93,13 +93,16 @@ class SingleProduct extends Component {
                 <button
                   className="btn btn-primary"
                   onClick={() => this.addItem(product)}
+                  type="button"
                 >
                   Add To Cart
                 </button>
               </div>
               <br />
               <Link to="/products">
-                <button className="btn btn-dark">Back to All Products </button>
+                <button className="btn btn-dark" type="button">
+                  Back to All Products{' '}
+                </button>
               </Link>
             </div>
           </div>
