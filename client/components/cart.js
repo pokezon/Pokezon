@@ -54,6 +54,7 @@ class Cart extends Component {
             item={item}
             key={item.id}
             isLoggedIn={this.props.isLoggedIn}
+            checkout={this.state.checkout}
           />
         ))}
         <br />
