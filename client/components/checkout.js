@@ -18,36 +18,41 @@ export class Checkout extends Component {
         CheckoutPage
         <div>
           Merchandise Details:
-          <p>Merch sub-total: ${totalMerchCost}</p>
+          <p>Merch sub-total: ${totalMerchCost.toFixed(2)}</p>
           <p>Tax: ${salesTax}</p>
           <p>Total: ${totalPrice}</p>
         </div>
         <div>Shipping Details:</div>
         <div>
           <form
-            onSubmit={() => this.props.confirmCheckout(this.props.cartItems)}
+            onSubmit={e => this.props.confirmCheckout(this.props.cartItems, e)}
           >
             <div className="form-row">
               <label htmlFor="inputName">Recipient Name:</label>
               <input
+                name="inputName"
                 type="text"
                 className="form-control"
                 id="inputName"
                 placeholder="Recipient Name"
+                required
               />
             </div>
             <div className="form-group">
               <label htmlFor="inputAddress">Address</label>
               <input
+                name="inputAddress"
                 type="text"
                 className="form-control"
                 id="inputAddress"
                 placeholder="1234 Main St"
+                required
               />
             </div>
             <div className="form-group">
               <label htmlFor="inputAddress2">Address 2</label>
               <input
+                name="inputAddress2"
                 type="text"
                 className="form-control"
                 id="inputAddress2"
@@ -58,28 +63,34 @@ export class Checkout extends Component {
               <div className="form-group col-md-6">
                 <label htmlFor="inputCity">City</label>
                 <input
+                  name="inputCity"
                   type="text"
                   className="form-control"
                   id="inputCity"
                   placeholder="City"
+                  required
                 />
               </div>
               <div className="form-group col-md-4">
                 <label htmlFor="inputState">State</label>
                 <input
+                  name="inputState"
                   type="text"
                   className="form-control"
                   id="inputState"
                   placeholder="State"
+                  required
                 />
               </div>
               <div className="form-group col-md-2">
                 <label htmlFor="inputZip">Zip</label>
                 <input
+                  name="inputZip"
                   type="text"
                   className="form-control"
                   id="inputZip"
                   placeholder="Zip Code"
+                  required
                 />
               </div>
             </div>
