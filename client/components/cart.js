@@ -2,8 +2,11 @@
 import React, {Component} from 'react'
 import CartItem from './cartItem'
 import {connect} from 'react-redux'
-import {gettingCart} from '../store/cart'
+import {gettingCart, updatingCartItem} from '../store/cart'
+import products from '../store/products'
 import {Checkout} from './checkout'
+
+const crypto = require('crypto')
 
 class Cart extends Component {
   state = {
@@ -25,6 +28,18 @@ class Cart extends Component {
     this.setState(prevState => ({checkout: !prevState.checkout}))
   }
 
+  confirmCheckout = cart => {
+    const generatedOrderId = crypto.randomBytes(16).toString('base64')
+    const thisOrderId = generatedOrderId
+    cart.forEach(cartItem =>
+      this.props.updateCart({
+        id: cartItem.id,
+        completedFlag: true,
+        completedOrderId: thisOrderId
+      })
+    )
+  }
+  
   deleteLocalCartItem = id => {
     const {localCart} = this.state
     this.setState(prevState => ({
@@ -36,12 +51,6 @@ class Cart extends Component {
       JSON.stringify(localCart.filter(item => item.id !== id))
     )
   }
-
-  // resetLocalCart = () => {
-  //   this.setState({
-  //     localCart: []
-  //   })
-  // }
 
   combinedSameProductQuants = cartItems => {
     const itemIdHashMap = {}
@@ -86,7 +95,9 @@ class Cart extends Component {
           Checkout
         </button>
         <br />
-        {this.state.checkout ? <Checkout cartItems={cart} /> : null}
+        {this.state.checkout ? (
+          <Checkout cartItems={cart} confirmCheckout={this.confirmCheckout} />
+        ) : null}
       </div>
     )
   }
@@ -97,7 +108,8 @@ const mapStateToProps = state => ({
 })
 
 const dispatchToProps = dispatch => ({
-  getCartItems: () => dispatch(gettingCart())
+  getCartItems: () => dispatch(gettingCart()),
+  updateCart: item => dispatch(updatingCartItem(item))
 })
 
 export default connect(mapStateToProps, dispatchToProps)(Cart)
