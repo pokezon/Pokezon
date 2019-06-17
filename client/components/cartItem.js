@@ -27,7 +27,19 @@ class CartItem extends Component {
 
   incrementQuantity = () => {
     const {quantity} = this.state
-    this.props.updatingCartItem({...this.props.item, quantity: quantity + 1})
+    const {isLoggedIn, updatingCartItem, item} = this.props
+    if (isLoggedIn) {
+      updatingCartItem({...item, quantity: quantity + 1})
+    } else {
+      let localStorageCart = JSON.parse(
+        localStorage.getItem('LocalStorageCart')
+      )
+      localStorageCart = localStorageCart.map(
+        entry =>
+          entry.id === item.id ? {...entry, quantity: quantity + 1} : entry
+      )
+      localStorage.setItem('LocalStorageCart', JSON.stringify(localStorageCart))
+    }
     this.setState(prevState => ({
       quantity: prevState.quantity + 1
     }))
@@ -35,10 +47,21 @@ class CartItem extends Component {
 
   decrementQuantity = () => {
     const {quantity} = this.state
+    const {isLoggedIn, updatingCartItem, item} = this.props
+
     if (quantity === 1) {
       this.removeItem(this.props.item.id)
+    } else if (isLoggedIn) {
+      updatingCartItem({...item, quantity: quantity - 1})
     } else {
-      this.props.updatingCartItem({...this.props.item, quantity: quantity - 1})
+      let localStorageCart = JSON.parse(
+        localStorage.getItem('LocalStorageCart')
+      )
+      localStorageCart = localStorageCart.map(
+        entry =>
+          entry.id === item.id ? {...entry, quantity: quantity - 1} : entry
+      )
+      localStorage.setItem('LocalStorageCart', JSON.stringify(localStorageCart))
     }
     this.setState(prevState => ({
       quantity: prevState.quantity - 1
