@@ -28,18 +28,28 @@ class Cart extends Component {
     this.setState(prevState => ({checkout: !prevState.checkout}))
   }
 
-  confirmCheckout = cart => {
+  confirmCheckout = (cart, e) => {
+    const shippingAddress = {
+      recipientName: e.target.inputName.value,
+      addressLine1: e.target.inputAddress.value,
+      addressLine2: e.target.inputAddress2.value || '',
+      city: e.target.inputCity.value,
+      state: e.target.inputState.value,
+      zipCode: e.target.inputZip.value
+    }
+
     const generatedOrderId = crypto.randomBytes(16).toString('base64')
     const thisOrderId = generatedOrderId
     cart.forEach(cartItem =>
       this.props.updateCart({
         id: cartItem.id,
         completedFlag: true,
-        completedOrderId: thisOrderId
+        completedOrderId: thisOrderId,
+        shippingAddress: JSON.stringify(shippingAddress)
       })
     )
   }
-  
+
   deleteLocalCartItem = id => {
     const {localCart} = this.state
     this.setState(prevState => ({

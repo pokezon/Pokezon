@@ -18,6 +18,9 @@ const Order = db.define('order', {
   },
   completedOrderId: {
     type: Sequelize.STRING
+  },
+  shippingAddress: {
+    type: Sequelize.JSON
   }
 })
 
