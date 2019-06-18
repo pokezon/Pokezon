@@ -35,29 +35,37 @@ export default class SettingsForm extends Component {
         <br />
         <h2>Change Username</h2>
 
-        <label htmlFor="currentUsername">Current Username: </label>
+        <label htmlFor="currentUsername" id="brand-name">
+          Current Username:{' '}
+        </label>
         <input
           type="text"
           name="currentUsername"
           value={this.state.currentUsername}
           onChange={this.handleChange}
+          id="brand-name"
           required
         />
 
         <br />
 
-        <label htmlFor="password">Password: </label>
+        <label htmlFor="password" id="brand-name">
+          Password:{' '}
+        </label>
         <input
           type="text"
           name="password"
           value={this.state.password}
           onChange={this.handleChange}
+          id="brand-name"
           required
         />
 
         <br />
 
-        <label htmlFor="newUsername">New Username: </label>
+        <label htmlFor="newUsername" id="brand-name">
+          New Username:{' '}
+        </label>
         <input
           type="text"
           name="newUsername"
@@ -68,7 +76,7 @@ export default class SettingsForm extends Component {
 
         <br />
 
-        <input type="submit" className="btn btn-primary" />
+        <input type="submit" className="btn btn-primary" id="brand-name" />
       </form>
     )
   }

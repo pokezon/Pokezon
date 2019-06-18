@@ -59,7 +59,11 @@ export const UserHome = props => {
 
         <br />
         <Link to="/home/settings">
-          <button type="button" className="btn btn-warning text-white">
+          <button
+            type="button"
+            className="btn btn-warning text-white"
+            id="brand-name"
+          >
             Update Profile
           </button>
         </Link>
