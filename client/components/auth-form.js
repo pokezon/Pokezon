@@ -9,58 +9,77 @@ const AuthForm = props => {
   const {name, displayName, handleSubmit, error} = props
 
   return (
-    <div>
-      <form onSubmit={handleSubmit} name={name} id="auth-form">
-        <div className="form-group">
-          <label htmlFor="username">
-            <small>Username:</small>
-          </label>
-          <input
-            className="form-control"
-            name="username"
-            type="text"
-            placeholder="Username"
-          />
-        </div>
-        {name === 'signup' ? (
+    <div className="loginPageContainer">
+      <h2 align="center">- Your Anonymity is our Priority -</h2>
+      <div className="loginPage">
+        <form onSubmit={handleSubmit} name={name} id="auth-form">
           <div className="form-group">
-            <label htmlFor="email">
-              <small>Email</small>
+            <label htmlFor="username">
+              <small>
+                <img
+                  src="https://cdn.bulbagarden.net/upload/5/54/Rocket_Grunt_M_OD.png"
+                  width="30%"
+                />Username:
+              </small>
             </label>
             <input
               className="form-control"
-              name="email"
+              name="username"
               type="text"
-              placeholder="Email"
+              placeholder="Username"
             />
           </div>
-        ) : (
-          ''
-        )}
-        <div className="form-group">
-          <label htmlFor="password">
-            <small>Password:</small>
-          </label>
-          <input
-            className="form-control"
-            name="password"
-            type="password"
-            placeholder="Password"
-          />
-        </div>
-        <div>
-          <button className="btn btn-success" type="submit">
-            {displayName}
-          </button>
-          <div className="divider" />
-          <a href="/auth/google">
-            <button className="btn btn-danger" type="button">
-              {displayName} with Google
+          {name === 'signup' ? (
+            <div className="form-group">
+              <label htmlFor="email">
+                <small>
+                  <img
+                    src="https://img.icons8.com/cotton/2x/secured-letter--v1.png"
+                    width="6%"
+                  />{' '}
+                  Email
+                </small>
+              </label>
+              <input
+                className="form-control"
+                name="email"
+                type="text"
+                placeholder="Email"
+              />
+            </div>
+          ) : (
+            ''
+          )}
+          <div className="form-group">
+            <label htmlFor="password">
+              <small>
+                <img
+                  src="https://tr.rbxcdn.com/e75ccf8e7612a983da811d00e6d6df58/420/420/Decal/Png"
+                  width="5%"
+                />Password:
+              </small>
+            </label>
+            <input
+              className="form-control"
+              name="password"
+              type="password"
+              placeholder="Password"
+            />
+          </div>
+          <div>
+            <button className="btn btn-success" type="submit">
+              {displayName}
             </button>
-          </a>
-        </div>
-        {error && error.response && <div> {error.response.data} </div>}
-      </form>
+            <div className="divider" />
+            <a href="/auth/google">
+              <button className="btn btn-danger" type="button">
+                {displayName} with Google
+              </button>
+            </a>
+          </div>
+          {error && error.response && <div> {error.response.data} </div>}
+        </form>
+      </div>
     </div>
   )
 }

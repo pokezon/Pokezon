@@ -9,16 +9,20 @@ const padToThree = number => {
   return number
 }
 
-const pokemon = pokeData.map(({id, name: {english}, type, base: {HP}}) => ({
-  id,
-  name: english,
-  type: type[0],
-  price: +(Math.random() * 100).toFixed(2),
-  description: `A Pokemon of ${type[0]} type with the base HP of ${HP}`,
-  imageUrl: `https://raw.githubusercontent.com/fanzeyi/pokemon.json/master/images/${padToThree(
-    id
-  ) + english}.png`,
-  quantity: Math.floor(Math.random() * 100)
-}))
+const pokemon = pokeData.map(
+  ({id, name: {english}, type, base: {HP, Attack, Defense}}) => ({
+    id,
+    name: english,
+    type: type[0],
+    price: +(Math.random() * 100).toFixed(2),
+    description: `A Pokemon of ${
+      type[0]
+    } type with the base HP of ${HP}. With its ${Attack} Attack and ${Defense} Defense, this Pokémon will be a great asset to your collection!`,
+    imageUrl: `https://raw.githubusercontent.com/fanzeyi/pokemon.json/master/images/${padToThree(
+      id
+    ) + english}.png`,
+    quantity: Math.floor(Math.random() * 100)
+  })
+)
 
 module.exports = {pokemon}
