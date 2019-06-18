@@ -101,7 +101,10 @@ p {
   background-color: white;
   border-width: 1px;
   border-radius: 5px;
-  width: 100%;
+
+  width: 105%;
+
+
   /* height: 90%; */
   padding: 5%;
   align-self: center;
