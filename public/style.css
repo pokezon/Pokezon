@@ -207,7 +207,6 @@ p {
   text-align: center;
 }
 
-
 .loginPageContainer {
   display: flex;
   justify-content: center;
@@ -228,4 +227,27 @@ p {
   margin-top: 1%;
   width: 30%;
   box-shadow: 5px 5px 5px grey;
+}
+
+.checkoutPage {
+  display: flex;
+  justify-content: space-around;
+  border-style: outset;
+  background: linear-gradient(#c0c0c0, #ffffff);
+  border-width: 1px;
+  border-radius: 10px;
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  margin-top: 1%;
+  margin-left: 15%;
+  margin-right: 15%;
+  width: 70%;
+  box-shadow: 5px 5px 5px grey;
+}
+
+.checkoutButtons {
+  display: flex;
+  justify-content: space-around;
 }
