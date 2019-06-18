@@ -14,14 +14,12 @@ class AllProducts extends Component {
           'WEBSITE SEIZED BY THE U.S. GOVERNMENT'
         ) : (
           <div>
-            <br />
             <div className="container">
               {/* <h2 className="text-center">Our Wonderful Collection</h2> */}
               <div className="row">
                 {this.props.allProducts.map(product => {
                   return (
                     <div key={product.id} className="eachProduct test">
-                      <br />
                       <div className="thumbnail">
                         <Link to={`/products/${product.id}`} align="center">
                           <img src={product.imageUrl} width="75%" />
