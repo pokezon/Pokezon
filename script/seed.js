@@ -37,6 +37,7 @@ async function seed() {
     Order.create({
       quantity: 2,
       completedFlag: true,
+      completedOrderId: '234354351W',
       userId: users[0].id,
       productId: products[3].id
     }),
@@ -55,6 +56,7 @@ async function seed() {
     Order.create({
       quantity: 2,
       completedFlag: true,
+      completedOrderId: '12345RGrg==',
       userId: users[1].id,
       productId: products[53].id
     }),
