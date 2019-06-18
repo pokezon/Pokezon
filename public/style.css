@@ -251,3 +251,23 @@ p {
   display: flex;
   justify-content: space-around;
 }
+
+.updateForm {
+  display: flex;
+  border-style: outset;
+  background: linear-gradient(#c0c0c0, #ffffff);
+  border-width: 1px;
+  border-radius: 10px;
+  margin-top: 1%;
+  margin-left: 25%;
+  margin-right: 25%;
+  width: 25%;
+  box-shadow: 5px 5px 5px grey;
+}
+
+.innerForm {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  left: 20%;
+}

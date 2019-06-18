@@ -73,10 +73,9 @@ class AllProducts extends Component {
               <div className="row">
                 {this.props.allProducts.map(product => {
                   return (
-
                     <div key={product.id} className="eachProduct test">
                       <br />
-      
+
                       <div className="thumbnail">
                         <Link to={`/products/${product.id}`}>
                           <img src={product.imageUrl} width="150" />
@@ -124,7 +123,6 @@ const mapStateToProps = state => ({
   isLoggedIn: !!state.user.id,
   cart: state.cart.cartItems
 })
-
 
 const mapDispatchToProps = dispatch => ({
   getProducts: () => dispatch(gettingAllProducts()),
