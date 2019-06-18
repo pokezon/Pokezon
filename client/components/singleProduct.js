@@ -69,7 +69,7 @@ class SingleProduct extends Component {
         <div align="center">
           <br />
           <br />
-          <div className="singleProductContainer">
+          <div className="singleProductContainer test">
             <div className="singleProductImage">
               <img src={product.imageUrl} width="500" />
             </div>
@@ -94,13 +94,14 @@ class SingleProduct extends Component {
                   className="btn btn-primary"
                   onClick={() => this.addItem(product)}
                   type="button"
+                  id="brand-name"
                 >
                   Add To Cart
                 </button>
               </div>
               <br />
               <Link to="/products">
-                <button className="btn btn-dark" type="button">
+                <button className="btn btn-dark" type="button" id="brand-name">
                   Back to All Products{' '}
                 </button>
               </Link>

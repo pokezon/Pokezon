@@ -38,15 +38,24 @@ form div {
   display: inline-block;
 }
 
+h1 {
+  font-family: Special Elite;
+}
 h2 {
-  /* text-shadow: 1px 1px 2px black; */
+  font-family: Special Elite;
 }
 h3 {
-  /* text-shadow: 1px 1px 2px black; */
+  font-family: Special Elite;
 }
 
+h4 {
+  font-family: Special Elite;
+}
+h5 {
+  font-family: Special Elite;
+}
 p {
-  /* text-shadow: 1px 1px 2px black; */
+  font-family: Special Elite;
 }
 
 .container {
@@ -91,7 +100,7 @@ p {
   background-color: white;
   border-width: 1px;
   border-radius: 5px;
-  width: 200%;
+  width: 100%;
   padding: 3%;
   align-self: center;
   box-shadow: 5px 5px 5px grey;
@@ -153,4 +162,13 @@ p {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+}
+
+.test {
+  background-image: url('http://media-s3-us-east-1.ceros.com/hype-beast/images/2018/07/13/a9a51bc0b8d626db493ab5f9a971b043/background-hero.png');
+  background-size: 230%;
+}
+
+.text-shadow {
+  text-shadow: 2px 2px black;
 }

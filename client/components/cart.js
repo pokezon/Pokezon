@@ -85,7 +85,12 @@ class Cart extends Component {
     cart = this.combinedSameProductQuants(cart)
     return (
       <div className="text-center">
-        {cart.length ? '' : <h1>Looks like your cart is empty!</h1>}
+        <br />
+        {cart.length ? (
+          ''
+        ) : (
+          <h1 id="brand-name">Looks like your cart is empty!</h1>
+        )}
         {cart.map(item => (
           <CartItem
             item={item}
@@ -101,6 +106,7 @@ class Cart extends Component {
           className="btn btn-success text-white"
           onClick={this.toggleCheckout}
           type="button"
+          id="brand-name"
         >
           Checkout
         </button>

@@ -82,6 +82,7 @@ class CartItem extends Component {
           className="btn btn-success"
           onClick={this.incrementQuantity}
           type="button"
+          id="brand-name"
         >
           +
         </button>
@@ -89,6 +90,7 @@ class CartItem extends Component {
           className="btn btn-danger"
           onClick={this.decrementQuantity}
           type="button"
+          id="brand-name"
         >
           -
         </button>
@@ -97,6 +99,7 @@ class CartItem extends Component {
           className="btn btn-danger"
           onClick={() => this.removeItem(id)}
           type="button"
+          id="brand-name"
         >
           Delete
         </button>
