@@ -45,7 +45,7 @@ async function seed() {
       quantity: 2,
       completedFlag: false,
       userId: users[1].id,
-      productId: products[500].id
+      productId: products[130].id
     }),
     Order.create({
       quantity: 2,
