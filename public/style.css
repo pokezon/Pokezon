@@ -100,8 +100,9 @@ p {
   background-color: white;
   border-width: 1px;
   border-radius: 5px;
-  width: 100%;
-  padding: 3%;
+  width: 150%;
+  /* height: 90%; */
+  padding: 5%;
   align-self: center;
   box-shadow: 5px 5px 5px grey;
 }
@@ -142,7 +143,7 @@ p {
   border-width: 1px;
   border-radius: 10px;
   padding: 1%;
-  width: 40%;
+  width: 30%;
   box-shadow: 5px 5px 5px grey;
 }
 
@@ -171,4 +172,26 @@ p {
 
 .text-shadow {
   text-shadow: 2px 2px black;
+}
+
+.loginPageContainer {
+  display: flex;
+  justify-content: center;
+  padding: 3%;
+  flex-direction: column;
+  align-items: center;
+}
+
+.loginPage {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  border-style: outset;
+  background: linear-gradient(#c0c0c0, #ffffff);
+  border-width: 1px;
+  border-radius: 10px;
+  padding: 3%;
+  margin-top: 1%;
+  width: 30%;
+  box-shadow: 5px 5px 5px grey;
 }

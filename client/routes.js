@@ -15,7 +15,7 @@ import {
   OrderHistory
 } from './components'
 import {me} from './store'
-import {gettingCart} from './store/cart'
+import {gettingCart, addingCartItem} from './store/cart'
 
 /**
  * COMPONENT
@@ -25,8 +25,21 @@ class Routes extends Component {
     await this.props.loadInitialData()
     this.props.gettingCart()
     if (!localStorage.getItem('LocalStorageCart')) {
-      let items = []
-      localStorage.setItem('LocalStorageCart', JSON.stringify(items))
+      localStorage.setItem('LocalStorageCart', JSON.stringify([]))
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    const localStorageCart = JSON.parse(
+      localStorage.getItem('LocalStorageCart')
+    )
+    const {isLoggedIn} = this.props
+
+    if (isLoggedIn !== prevProps.isLoggedIn) {
+      localStorageCart.forEach(item =>
+        this.props.addingCartItem(item.product, item.quantity)
+      )
+      localStorage.setItem('LocalStorageCart', JSON.stringify([]))
     }
   }
 
@@ -77,6 +90,9 @@ const mapDispatch = dispatch => {
     },
     gettingCart() {
       dispatch(gettingCart())
+    },
+    addingCartItem(product, quantity) {
+      dispatch(addingCartItem(product, quantity))
     }
   }
 }
