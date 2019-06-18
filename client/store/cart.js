@@ -2,12 +2,14 @@ import axios from 'axios'
 
 // THIS IS INITIAL STATE
 const initialState = {
-  cartItems: []
+  cartItems: [],
+  orderHistory: []
 }
 
 // ACTION TYPE
 
 const GET_ALL_CART_ITEMS = 'GET_ALL_CART_ITEMS'
+const GET_ORDER_HISTORY = 'GET_ORDER_HISTORY'
 const ADD_CART_ITEM = 'ADD_CART_ITEM'
 const UPDATE_CART_ITEM_QUANTITY = 'UPDATE_CART_ITEM_QUANTITY'
 const REMOVE_CART_ITEM = 'REMOVE_CART_ITEM'
@@ -16,6 +18,9 @@ const RESET_CART = 'RESET_CART'
 // ACTION CREATORS
 
 const gotCart = items => ({type: GET_ALL_CART_ITEMS, items})
+
+const gotHistory = items => ({type: GET_ORDER_HISTORY, items})
+
 const addCartItem = item => ({
   type: ADD_CART_ITEM,
   item
@@ -40,9 +45,19 @@ export const gettingCart = () => async dispatch => {
   }
 }
 
-export const addingCartItem = product => async dispatch => {
+export const gettingOrderHistory = () => async dispatch => {
   try {
-    const response = await axios.post(`/api/cart`, {...product, quantity: 1})
+    const response = await axios.get(`/api/cart/history`)
+    dispatch(gotHistory(response.data))
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+export const addingCartItem = (product, quantity = 1) => async dispatch => {
+  try {
+    const response = await axios.post(`/api/cart`, {...product, quantity})
+    console.log('addingCartItem thunk >>>>', response)
     const item = await axios.get(`/api/cart/${response.data.id}`)
     dispatch(addCartItem(item.data))
   } catch (error) {
@@ -84,6 +99,9 @@ export default function(state = initialState, action) {
   switch (action.type) {
     case GET_ALL_CART_ITEMS:
       newState.cartItems = action.items
+      break
+    case GET_ORDER_HISTORY:
+      newState.orderHistory = action.items
       break
     case ADD_CART_ITEM:
       newState.cartItems = newState.cartItems.concat(action.item)
