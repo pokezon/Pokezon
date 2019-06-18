@@ -8,7 +8,9 @@ export class OrderHistory extends Component {
   }
 
   render() {
-    return <div>OrderHistory</div>
+    const {orderHistory} = this.props
+    console.log(orderHistory)
+    return orderHistory.length && <div>OrderHistory</div>
   }
 }
 
