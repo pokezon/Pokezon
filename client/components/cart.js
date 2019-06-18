@@ -30,9 +30,22 @@ class Cart extends Component {
   }
 
   render() {
-    let cart = this.props.isLoggedIn
-      ? this.props.cartItems
-      : this.state.localCart
+    let cart
+    let checkOutButtonLink = ''
+    let checkOutButtonLinkText = ''
+    if (this.props.isLoggedIn) {
+      cart = this.props.cartItems
+      checkOutButtonLink = cart.length ? '/cart/checkout' : '/products'
+      checkOutButtonLinkText = cart.length
+        ? 'Go to Checkout'
+        : 'Browse Our Pokemon'
+    } else {
+      cart = this.state.localCart
+      checkOutButtonLink = cart.length ? '/signup' : '/products'
+      checkOutButtonLinkText = cart.length
+        ? 'Sign Up To Checkout'
+        : 'Browse Our Pokemon'
+    }
 
     return (
       <div className="text-center">
@@ -51,7 +64,7 @@ class Cart extends Component {
           />
         ))}
         <br />
-        <Link to={cart.length ? '/cart/checkout' : '/products'}>
+        <Link to={checkOutButtonLink}>
           <button
             type="button"
             className={
@@ -61,7 +74,7 @@ class Cart extends Component {
             }
             id="brand-name"
           >
-            {cart.length ? 'Go to Checkout' : 'Browse Our Pokemon'}
+            {checkOutButtonLinkText}
           </button>
         </Link>
         <br />
