@@ -1,8 +1,6 @@
 import React from 'react'
-import SingleProduct from '../singleProduct'
 
 const OrderItem = ({order}) => {
-  // return <SingleProduct />
   return (
     <>
       <p>
