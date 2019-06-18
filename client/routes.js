@@ -11,7 +11,8 @@ import {
   SingleProduct,
   SettingsForm,
   Featured,
-  Checkout
+  Checkout,
+  OrderHistory
 } from './components'
 import {me} from './store'
 import {gettingCart} from './store/cart'
@@ -43,6 +44,7 @@ class Routes extends Component {
         <Route exact path="/cart" component={Cart} />
         <Route exact path="/home/settings" component={SettingsForm} />
         <Route exact path="/cart/checkout" component={Checkout} />
+        <Route exact path="/order-history" component={OrderHistory} />
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}

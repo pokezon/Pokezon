@@ -12,4 +12,4 @@ export {default as Cart} from './cart'
 export {default as Checkout} from './checkout'
 export {default as SettingsForm} from './settingsForm'
 export {default as Featured} from './featured'
-
+export {default as OrderHistory} from './order-history'

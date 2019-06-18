@@ -57,6 +57,7 @@ export const gettingOrderHistory = () => async dispatch => {
 export const addingCartItem = product => async dispatch => {
   try {
     const response = await axios.post(`/api/cart`, {...product, quantity: 1})
+    console.log('addingCartItem thunk >>>>', response)
     const item = await axios.get(`/api/cart/${response.data.id}`)
     dispatch(addCartItem(item.data))
   } catch (error) {
