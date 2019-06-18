@@ -74,7 +74,7 @@ class AllProducts extends Component {
               <div className="row">
                 {this.props.allProducts.map(product => {
                   return (
-                    <div key={product.id} className="eachProduct">
+                    <div key={product.id} className="eachProduct test">
                       <br />
                       <div className="thumbnail">
                         <Link to={`/products/${product.id}`}>
