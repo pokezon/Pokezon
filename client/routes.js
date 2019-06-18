@@ -10,10 +10,12 @@ import {
   Cart,
   SingleProduct,
   SettingsForm,
-  Featured
+  Featured,
+  Checkout,
+  OrderHistory
 } from './components'
 import {me} from './store'
-import {gettingCart} from './store/cart'
+import {gettingCart, addingCartItem} from './store/cart'
 
 /**
  * COMPONENT
@@ -23,8 +25,21 @@ class Routes extends Component {
     await this.props.loadInitialData()
     this.props.gettingCart()
     if (!localStorage.getItem('LocalStorageCart')) {
-      let items = []
-      localStorage.setItem('LocalStorageCart', JSON.stringify(items))
+      localStorage.setItem('LocalStorageCart', JSON.stringify([]))
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    const localStorageCart = JSON.parse(
+      localStorage.getItem('LocalStorageCart')
+    )
+    const {isLoggedIn} = this.props
+
+    if (isLoggedIn !== prevProps.isLoggedIn) {
+      localStorageCart.forEach(item =>
+        this.props.addingCartItem(item.product, item.quantity)
+      )
+      localStorage.setItem('LocalStorageCart', JSON.stringify([]))
     }
   }
 
@@ -41,6 +56,8 @@ class Routes extends Component {
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/cart" component={Cart} />
         <Route exact path="/home/settings" component={SettingsForm} />
+        <Route exact path="/cart/checkout" component={Checkout} />
+        <Route exact path="/order-history" component={OrderHistory} />
         {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}
@@ -73,6 +90,9 @@ const mapDispatch = dispatch => {
     },
     gettingCart() {
       dispatch(gettingCart())
+    },
+    addingCartItem(product, quantity) {
+      dispatch(addingCartItem(product, quantity))
     }
   }
 }
