@@ -15,59 +15,66 @@ class Featured extends Component {
           'WEBSITE SEIZED BY THE U.S. GOVERNMENT'
         ) : (
           <div>
-            <h1 className=" text-center text-dark">Welcome to pokezon.</h1>
             <br />
+            <h1 className=" text-center text-dark">Welcome to pokezon.</h1>
             <div>
-              <Carousel className="carousel-caption d-none d-md-block">
+              <Carousel className="carousel-text-align">
                 <Carousel.Item>
                   <Link to="/products/4">
-                    <img
-                      src="https://vignette.wikia.nocookie.net/pokemon/images/e/e4/Tierno_Charmander.png/revision/latest?cb=20171128041706"
-                      width="87%"
-                      alt="First slide"
-                    />
-                    <Carousel.Caption>
-                      <h2 className="text-white text-shadow">
-                        MORE CHARMANDERS!
-                      </h2>
-                      <p className="text-white text-shadow">
-                        Due to popular demand. Everyone's favorite lizard is
-                        back in stock!
-                      </p>
-                    </Carousel.Caption>
+                    <div>
+                      <img
+                        src="https://vignette.wikia.nocookie.net/pokemon/images/e/e4/Tierno_Charmander.png/revision/latest?cb=20171128041706"
+                        width="55%"
+                        alt="First slide"
+                      />
+                      <Carousel.Caption>
+                        <h2 className="text-white text-shadow">
+                          MORE CHARMANDERS!
+                        </h2>
+                        <p className="text-white text-shadow">
+                          Due to popular demand. Everyone's favorite lizard is
+                          back in stock!
+                        </p>
+                      </Carousel.Caption>
+                    </div>
                   </Link>
                 </Carousel.Item>
                 <Carousel.Item>
                   <Link to="/products/8">
-                    <img
-                      src="https://cdna.artstation.com/p/assets/images/images/009/896/578/large/ubeyd-yuruk-screenshot001.jpg?1521473780"
-                      width="87%"
-                      alt="Second slide"
-                    />
-
-                    <Carousel.Caption className="text-dark">
-                      <h2 className="text-white text-shadow">SQUAD UP</h2>
-                      <p className="text-white text-shadow">
-                        The boys are back
-                      </p>
-                    </Carousel.Caption>
+                    <div>
+                      <img
+                        src="https://cdna.artstation.com/p/assets/images/images/009/896/578/large/ubeyd-yuruk-screenshot001.jpg?1521473780"
+                        width="55%"
+                        alt="Second slide"
+                      />
+                      <Carousel.Caption className="text-dark">
+                        <h2 className="text-white text-shadow ">SQUAD UP</h2>
+                        <p className="text-white text-shadow ">
+                          The boys are back
+                        </p>
+                      </Carousel.Caption>
+                    </div>
                   </Link>
                 </Carousel.Item>
 
                 <Carousel.Item>
                   <Link to="/products/128">
-                    <img
-                      src="https://daily.pokecommunity.com/wp-content/uploads/2016/04/whos_that_pokemon_eevee.png"
-                      width="87%"
-                      alt="Third slide"
-                    />
+                    <div>
+                      <img
+                        src="https://daily.pokecommunity.com/wp-content/uploads/2016/04/whos_that_pokemon_eevee.png"
+                        width="55%"
+                        alt="Third slide"
+                      />
 
-                    <Carousel.Caption className="text-dark text-shadow">
-                      <h2 className="text-white text-shadow">
-                        And Our Pokemon of the Month is..........!!!
-                      </h2>
-                      <p className="text-white">Everyone loves this pokemon!</p>
-                    </Carousel.Caption>
+                      <Carousel.Caption className="text-dark text-shadow">
+                        <h2 className="text-white text-shadow">
+                          And Our Pokemon of the Month is..........!!!
+                        </h2>
+                        <p className="text-white">
+                          Everyone loves this pokemon!
+                        </p>
+                      </Carousel.Caption>
+                    </div>
                   </Link>
                 </Carousel.Item>
               </Carousel>

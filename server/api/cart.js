@@ -31,7 +31,8 @@ router.get('/history', async (req, res, next) => {
           userId: req.user.id,
           completedFlag: true
         },
-        include: [{model: Product}]
+        include: [{model: Product}],
+        order: [['createdAt', 'DESC'], ['completedOrderId', 'ASC']]
       })
       res.json(cart)
     } else {
