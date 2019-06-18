@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {logout, resettingCart} from '../store'
 
-const Navbar = ({handleLogOut, isLoggedIn, cart}) => (
+export const Navbar = ({handleLogOut, isLoggedIn, cart}) => (
   <div>
     <h1 id="brand-name" className="navbar-brand">
       pokezon.
