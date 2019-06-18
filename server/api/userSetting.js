@@ -5,7 +5,7 @@ const crypto = require('crypto')
 module.exports = router
 
 router.put('/', async (req, res, next) => {
-  const {currentUsername, newUsername, password} = req.body
+  const {currentUsername, newUsername} = req.body
   console.log(currentUsername, newUsername)
   try {
     const final = await User.update(
