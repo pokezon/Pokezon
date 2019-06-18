@@ -22,7 +22,7 @@ class AllProducts extends Component {
                     <div key={product.id} className="eachProduct test">
                       <div className="thumbnail">
                         <Link to={`/products/${product.id}`} align="center">
-                          <img src={product.imageUrl} width="75%" />
+                          <img src={product.imageUrl} width="50%" />
                         </Link>
                         <br />
                         <div className="thumbnailInfo">
@@ -31,7 +31,7 @@ class AllProducts extends Component {
                           <h5 align="center">
                             <img
                               src="https://cdn0.iconfinder.com/data/icons/pokemon-go-vol-1/135/_Coin-512.png"
-                              width="10%"
+                              width="8%"
                               align="center"
                             />${product.price}
                           </h5>
@@ -39,7 +39,7 @@ class AllProducts extends Component {
                           <div align="center">
                             <img
                               src="https://i.ya-webdesign.com/images/open-pokeball-png-8.png"
-                              width="10%"
+                              width="8%"
                             />
                             <button className="btn btn-primary" id="brand-name">
                               Add to Cart

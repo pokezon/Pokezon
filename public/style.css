@@ -131,6 +131,7 @@ p {
   /* width: 200%; */
   padding: 3%;
   box-shadow: 5px 5px 5px grey;
+  width: 60%;
 }
 
 .userProfile {
