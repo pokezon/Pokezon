@@ -13,7 +13,7 @@ export class OrderHistory extends Component {
 }
 
 const mapStateToProps = state => ({
-  orderHistory: state.orders.orderHistory
+  orderHistory: state.cart.orderHistory
 })
 
 const mapDispatchToProps = dispatch => ({
