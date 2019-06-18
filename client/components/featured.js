@@ -15,7 +15,7 @@ class Featured extends Component {
           'WEBSITE SEIZED BY THE U.S. GOVERNMENT'
         ) : (
           <div>
-            <h2 className="text-center text-danger">Welcome to pokezon.</h2>
+            <h1 className=" text-center text-dark">Welcome to pokezon.</h1>
             <br />
             <div>
               <Carousel className="carousel-caption d-none d-md-block">
@@ -27,8 +27,10 @@ class Featured extends Component {
                       alt="First slide"
                     />
                     <Carousel.Caption>
-                      <h2 className="text-white">MORE CHARMANDERS!</h2>
-                      <p className="text-white ">
+                      <h2 className="text-white text-shadow">
+                        MORE CHARMANDERS!
+                      </h2>
+                      <p className="text-white text-shadow">
                         Due to popular demand. Everyone's favorite lizard is
                         back in stock!
                       </p>
@@ -44,8 +46,10 @@ class Featured extends Component {
                     />
 
                     <Carousel.Caption className="text-dark">
-                      <h2 className="text-white">SQUAD UP</h2>
-                      <p className="text-white">The boys are back</p>
+                      <h2 className="text-white text-shadow">SQUAD UP</h2>
+                      <p className="text-white text-shadow">
+                        The boys are back
+                      </p>
                     </Carousel.Caption>
                   </Link>
                 </Carousel.Item>
@@ -58,8 +62,8 @@ class Featured extends Component {
                       alt="Third slide"
                     />
 
-                    <Carousel.Caption className="text-dark">
-                      <h2 className="text-white">
+                    <Carousel.Caption className="text-dark text-shadow">
+                      <h2 className="text-white text-shadow">
                         And Our Pokemon of the Month is..........!!!
                       </h2>
                       <p className="text-white">Everyone loves this pokemon!</p>

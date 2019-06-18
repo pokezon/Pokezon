@@ -15,38 +15,51 @@ const Navbar = ({handleLogOut, isLoggedIn, cart}) => (
           {isLoggedIn ? (
             <div>
               {/* The navbar will show these links after you log in */}
-              <Link to="/" className="text-white bg-dark">
+              <Link to="/" className="text-white bg-dark" id="brand-name">
                 Home
               </Link>
-              <Link to="/home" className="text-white bg-dark">
+              <Link to="/home" className="text-white bg-dark" id="brand-name">
                 Your Profile
               </Link>
-              <Link to="/products" className="text-white bg-dark">
+              <Link
+                to="/products"
+                className="text-white bg-dark"
+                id="brand-name"
+              >
                 Our Pokemon
               </Link>
-              <Link to="/cart" className="text-white bg-dark">
+              <Link to="/cart" className="text-white bg-dark" id="brand-name">
                 Your Cart
               </Link>
-              <a href="#" onClick={handleLogOut} className="text-white bg-dark">
+              <a
+                href="#"
+                onClick={handleLogOut}
+                className="text-white bg-dark"
+                id="brand-name"
+              >
                 Logout
               </a>
             </div>
           ) : (
             <div>
               {/* The navbar will show these links before you log in */}
-              <Link to="/login" className="text-white bg-dark">
+              <Link to="/login" className="text-white bg-dark" id="brand-name">
                 Login
               </Link>
-              <Link to="/signup" className="text-white bg-dark">
+              <Link to="/signup" className="text-white bg-dark" id="brand-name">
                 Sign Up
               </Link>
-              <Link to="/" className="text-white bg-dark">
+              <Link to="/" className="text-white bg-dark" id="brand-name">
                 Home
               </Link>
-              <Link to="/products" className="text-white bg-dark">
+              <Link
+                to="/products"
+                className="text-white bg-dark"
+                id="brand-name"
+              >
                 Our Pokemon
               </Link>
-              <Link to="/cart" className="text-white bg-dark">
+              <Link to="/cart" className="text-white bg-dark" id="brand-name">
                 Your Cart
               </Link>
             </div>
