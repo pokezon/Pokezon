@@ -6,73 +6,59 @@ import {logout, resettingCart} from '../store'
 
 export const Navbar = ({handleLogOut, isLoggedIn, cart}) => (
   <div>
-    <h1 id="brand-name" className="navbar-brand">
-      pokezon.
-    </h1>
-    <nav className="navbar navbar-expand-sm bg-dark navbar-dark justify-content-end">
-      <div className="container">
-        <div className="navbar-header">
-          {isLoggedIn ? (
-            <div>
-              {/* The navbar will show these links after you log in */}
-              <Link to="/" className="text-white bg-dark" id="brand-name">
-                Home
-              </Link>
-              <Link to="/home" className="text-white bg-dark" id="brand-name">
-                Your Profile
-              </Link>
-              <Link
-                to="/products"
-                className="text-white bg-dark"
-                id="brand-name"
-              >
-                Our Pokemon
-              </Link>
-              <Link to="/cart" className="text-white bg-dark" id="brand-name">
-                Your Cart
-              </Link>
-              <a
-                href="#"
-                onClick={handleLogOut}
-                className="text-white bg-dark"
-                id="brand-name"
-              >
-                Logout
-              </a>
-            </div>
-          ) : (
-            <div>
-              {/* The navbar will show these links before you log in */}
-              <Link to="/login" className="text-white bg-dark" id="brand-name">
-                Login
-              </Link>
-              <Link to="/signup" className="text-white bg-dark" id="brand-name">
-                Sign Up
-              </Link>
-              <Link to="/" className="text-white bg-dark" id="brand-name">
-                Home
-              </Link>
-              <Link
-                to="/products"
-                className="text-white bg-dark"
-                id="brand-name"
-              >
-                Our Pokemon
-              </Link>
-              <Link to="/cart" className="text-white bg-dark" id="brand-name">
-                Your Cart
-              </Link>
-            </div>
-          )}
+    <a
+      href="https://poke-zon.herokuapp.com/"
+      id="brand-name"
+      className="text-dark"
+    >
+      <h2>pokezon.</h2>
+    </a>
+    <div>
+      {isLoggedIn ? (
+        <div className="nav">
+          {/* The navbar will show these links after you log in */}
+          <Link to="/" id="brand-name">
+            Home
+          </Link>
+          <Link to="/home" id="brand-name">
+            Your Profile
+          </Link>
+          <Link to="/products" id="brand-name">
+            Our Pokemon
+          </Link>
+          <Link to="/cart" id="brand-name" className="righty">
+            Your Cart
+          </Link>
+          <div>
+            <a href="#" onClick={handleLogOut} id="brand-name">
+              Logout
+            </a>
+          </div>
         </div>
-      </div>
-    </nav>
+      ) : (
+        <div className="nav">
+          {/* The navbar will show these links before you log in */}
+          <Link to="/" id="brand-name">
+            Home
+          </Link>
+          <Link to="/products" id="brand-name">
+            Our Pokemon
+          </Link>
+          <Link to="/cart" id="brand-name">
+            Your Cart
+          </Link>
+          <Link to="/login" id="brand-name">
+            Login
+          </Link>
+          <Link to="/signup" id="brand-name">
+            Sign Up
+          </Link>
+        </div>
+      )}
+    </div>
   </div>
 )
 
-/**
- * CONTAINER
- */
 const mapState = state => {
   return {
     isLoggedIn: !!state.user.id,
@@ -90,11 +76,3 @@ const mapDispatch = dispatch => {
 }
 
 export default connect(mapState, mapDispatch)(Navbar)
-
-/**
- * PROP TYPES
- */
-Navbar.propTypes = {
-  handleLogOut: PropTypes.func.isRequired,
-  isLoggedIn: PropTypes.bool.isRequired
-}
