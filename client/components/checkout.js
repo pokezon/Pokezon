@@ -1,32 +1,68 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {gettingCart} from '../store/cart'
-import CartItem from './cartItem'
+import {updatingCartItem} from '../store/cart'
+const crypto = require('crypto')
 
-export class Checkout extends Component {
+class Checkout extends Component {
+  generateShippingAddressObj = e => {
+    return {
+      recipientName: e.target.inputName.value,
+      addressLine1: e.target.inputAddress.value,
+      addressLine2: e.target.inputAddress2.value || '',
+      city: e.target.inputCity.value,
+      state: e.target.inputState.value,
+      zipCode: e.target.inputZip.value
+    }
+  }
+
+  generateOrderId = () => {
+    return crypto.randomBytes(16).toString('base64')
+  }
+
+  confirmCheckout = (cart, e) => {
+    const shippingAddressJSON = JSON.stringify(
+      this.generateShippingAddressObj(e)
+    )
+
+    const thisOrderId = this.generateOrderId()
+
+    cart.forEach(cartItem =>
+      this.props.updateCart({
+        id: cartItem.id,
+        completedFlag: true,
+        completedOrderId: thisOrderId,
+        shippingAddress: shippingAddressJSON
+      })
+    )
+  }
+
+  totalMerchCost = cart =>
+    cart.reduce(
+      (accum, {quantity, product}) => accum + quantity * product.price,
+      0
+    ) || 0
+
+  calcSalesTax = totalMerchCost => +(totalMerchCost * 0.07).toFixed(2)
+
+  totalPrice = totalMerchCost => +(totalMerchCost * 1.07).toFixed(2)
+
   render() {
-    // console.log('----- CartItem -----', CartItem)
-    const totalMerchCost =
-      this.props.cartItems.reduce(
-        (accum, {quantity, product}) => accum + quantity * product.price,
-        0
-      ) || 0
-    const salesTax = +(totalMerchCost * 0.07).toFixed(2)
-    const totalPrice = +(totalMerchCost + salesTax).toFixed(2)
+    let cart = this.props.isLoggedIn
+      ? this.props.cartItems
+      : JSON.parse(localStorage.getItem('LocalStorageCart'))
+
     return (
       <>
         CheckoutPage
         <div>
           Merchandise Details:
-          <p>Merch sub-total: ${totalMerchCost.toFixed(2)}</p>
-          <p>Tax: ${salesTax}</p>
-          <p>Total: ${totalPrice}</p>
+          <p>Merch sub-total: ${this.totalMerchCost(cart).toFixed(2)}</p>
+          <p>Tax: ${this.calcSalesTax(this.totalMerchCost(cart))}</p>
+          <p>Total: ${this.totalPrice(this.totalMerchCost(cart))}</p>
         </div>
         <div>Shipping Details:</div>
         <div>
-          <form
-            onSubmit={e => this.props.confirmCheckout(this.props.cartItems, e)}
-          >
+          <form onSubmit={e => this.confirmCheckout(cart, e)}>
             <div className="form-row">
               <label htmlFor="inputName">Recipient Name:</label>
               <input
@@ -104,8 +140,13 @@ export class Checkout extends Component {
   }
 }
 
-const dispatchToProps = dispatch => ({
-  getCartItems: () => dispatch(gettingCart())
+const mapStateToProps = state => ({
+  cartItems: state.cart.cartItems,
+  isLoggedIn: !!state.user.id
 })
 
-export default connect(null, dispatchToProps)(Checkout)
+const dispatchToProps = dispatch => ({
+  updateCart: item => dispatch(updatingCartItem(item))
+})
+
+export default connect(mapStateToProps, dispatchToProps)(Checkout)
