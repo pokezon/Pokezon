@@ -35,7 +35,28 @@ class AllProducts extends Component {
       let localStorageCart = JSON.parse(
         localStorage.getItem('LocalStorageCart')
       )
-      localStorageCart.push({id: localStorageCart.length, product: product})
+      const foundItemInCart = localStorageCart.find(
+        cartItem => cartItem.product.id === product.id
+      )
+      if (foundItemInCart) {
+        localStorageCart = localStorageCart.map(item => {
+          if (item.id === foundItemInCart.id) {
+            return {
+              id: item.id,
+              product: product,
+              quantity: 1 + foundItemInCart.quantity
+            }
+          }
+          return item
+        })
+      } else {
+        localStorageCart.push({
+          id: localStorageCart.length,
+          product: product,
+          quantity: 1
+        })
+      }
+
       localStorage.setItem('LocalStorageCart', JSON.stringify(localStorageCart))
     }
   }
