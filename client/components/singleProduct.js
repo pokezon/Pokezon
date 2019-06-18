@@ -71,7 +71,7 @@ class SingleProduct extends Component {
           <br />
           <div className="singleProductContainer test">
             <div className="singleProductImage">
-              <img src={product.imageUrl} width="100%" />
+              <img src={product.imageUrl} width="10%" />
             </div>
             <div className="singleProductInfoBox">
               <h1>
