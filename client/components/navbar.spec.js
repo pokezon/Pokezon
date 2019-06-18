@@ -5,7 +5,6 @@ import React from 'react'
 import enzyme, {shallow} from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
 import {Navbar} from './navbar'
-import {Link} from 'react-router'
 
 const adapter = new Adapter()
 enzyme.configure({adapter})
