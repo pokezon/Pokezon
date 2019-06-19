@@ -16,7 +16,7 @@ describe('UserHome', () => {
     userHome = shallow(<UserHome username="cody@email.com" />)
   })
 
-  it('renders the email in an h1', () => {
+  it('renders the email in an h2', () => {
     expect(
       userHome
         .find('h2')
