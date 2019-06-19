@@ -73,7 +73,7 @@ class AllProducts extends Component {
               ---{' '}
               <img
                 src="https://upload.wikimedia.org/wikipedia/en/3/39/Pokeball.PNG"
-                width="5%"
+                width="4%"
               />{' '}
               ---
             </h1>

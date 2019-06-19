@@ -68,6 +68,14 @@ class SingleProduct extends Component {
       return (
         <div align="center">
           <br />
+          <h1>
+            -{' '}
+            <img
+              src="https://static.thenounproject.com/png/567595-200.png"
+              width="4%"
+            />{' '}
+            -
+          </h1>
           <br />
           <div className="singleProductContainer test">
             <div className="singleProductImage">
@@ -80,7 +88,7 @@ class SingleProduct extends Component {
               <h3>
                 <img
                   src="https://cdn0.iconfinder.com/data/icons/pokemon-go-vol-1/135/_Coin-512.png"
-                  width="8%"
+                  width="7%"
                 />{' '}
                 ${product.price}
               </h3>
@@ -90,7 +98,7 @@ class SingleProduct extends Component {
                 <br />
                 <img
                   src="https://i.ya-webdesign.com/images/open-pokeball-png-8.png"
-                  width="8%"
+                  width="7%"
                 />
                 <button
                   className="btn btn-primary"

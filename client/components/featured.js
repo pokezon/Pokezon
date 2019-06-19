@@ -17,17 +17,20 @@ class Featured extends Component {
           <div>
             <br />
             <h1 className=" text-center text-dark">
-              {' '}
               <img
-                src="https://ya-webdesign.com/transparent450_/open-pokeball-png-8.png"
+                src="https://static.thenounproject.com/png/551642-200.png"
                 width="5%"
               />{' '}
-              Welcome to pokezon.
+              Welcome to pokézon.{' '}
+              <img
+                src="https://static.thenounproject.com/png/551643-200.png"
+                width="5%"
+              />
             </h1>
             <div>
               <Carousel className="carousel-text-align">
                 <Carousel.Item>
-                  <Link to="/products/4">
+                  <Link to="/products/2">
                     <div>
                       <img
                         src="https://vignette.wikia.nocookie.net/pokemon/images/e/e4/Tierno_Charmander.png/revision/latest?cb=20171128041706"
@@ -47,7 +50,7 @@ class Featured extends Component {
                   </Link>
                 </Carousel.Item>
                 <Carousel.Item>
-                  <Link to="/products/8">
+                  <Link to="/products/6">
                     <div>
                       <img
                         src="https://cdna.artstation.com/p/assets/images/images/009/896/578/large/ubeyd-yuruk-screenshot001.jpg?1521473780"
@@ -90,6 +93,14 @@ class Featured extends Component {
             <br />
           </div>
         )}
+        <h1 className=" text-center text-dark">
+          -{' '}
+          <img
+            src="https://static.thenounproject.com/png/551641-200.png"
+            width="5%"
+          />{' '}
+          -
+        </h1>
       </div>
     )
   }

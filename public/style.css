@@ -261,10 +261,10 @@ p {
   background: linear-gradient(#c0c0c0, #ffffff);
   border-width: 1px;
   border-radius: 10px;
-  width: 30%;
+  width: 25%;
   box-shadow: 5px 5px 5px grey;
   flex-direction: column;
-  padding: 3%;
+  padding: 1%;
 }
 
 .updateForm {

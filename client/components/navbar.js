@@ -17,7 +17,7 @@ export const Navbar = ({handleLogOut, isLoggedIn, cart}) => (
           src="https://ui-ex.com/images/pokeball-transparent-6.png"
           width="3%"
         />{' '}
-        pokezon.
+        pokézon.
       </h2>
     </a>
     <div>
@@ -31,7 +31,7 @@ export const Navbar = ({handleLogOut, isLoggedIn, cart}) => (
             Your Profile
           </Link>
           <Link to="/products" id="brand-name">
-            Our Pokemon
+            Our Pokémon
           </Link>
           <Link to="/cart" id="brand-name" className="righty">
             Your Cart

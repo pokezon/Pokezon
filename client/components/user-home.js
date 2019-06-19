@@ -22,7 +22,7 @@ export const UserHome = props => {
       <h2>
         -----<img
           src="https://cdn.freebiesupply.com/images/large/1x/master-ball-pokemon-n82.png"
-          width="12%"
+          width="10%"
         />-----
       </h2>
       <div className="userProfile">
@@ -33,6 +33,13 @@ export const UserHome = props => {
           <h2>-- {username} --</h2>
           <br />
           <div className="icons">
+            <h5>
+              <img
+                src="https://cdn.bulbagarden.net/upload/thumb/8/8c/Forest_Badge.png/643px-Forest_Badge.png"
+                width="7%"
+              />
+              : VIP
+            </h5>
             <h5>
               <img
                 src="https://cdn3.iconfinder.com/data/icons/google-material-design-icons/48/ic_history_48px-512.png"

@@ -66,7 +66,7 @@ const AuthForm = props => {
               <small>
                 <img
                   src="https://tr.rbxcdn.com/e75ccf8e7612a983da811d00e6d6df58/420/420/Decal/Png"
-                  width="10%"
+                  width="6%"
                 />Password:
               </small>
             </label>

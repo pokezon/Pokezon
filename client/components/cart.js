@@ -55,7 +55,7 @@ export class Cart extends Component {
           -{' '}
           <img
             src="https://www.foothillsiga.com/wp-content/uploads/2016/05/shop-langing-cart-icon.png"
-            width="5%"
+            width="4%"
           />{' '}
           -{' '}
         </h1>
