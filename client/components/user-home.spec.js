@@ -19,9 +19,9 @@ describe('UserHome', () => {
   it('renders the email in an h1', () => {
     expect(
       userHome
-        .find('h1')
+        .find('h2')
         .at(1)
         .text()
-    ).to.be.equal('cody@email.com')
+    ).to.be.equal('-- cody@email.com --')
   })
 })
