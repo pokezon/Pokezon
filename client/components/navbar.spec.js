@@ -20,7 +20,7 @@ describe('Navbar guest', () => {
     expect(
       navbar
         .find('Link')
-        .at(1)
+        .at(4)
         .props().to
     ).to.be.equal('/signup')
   })
