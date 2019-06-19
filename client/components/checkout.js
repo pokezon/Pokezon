@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {updatingCartItem} from '../store/cart'
+import {Link} from 'react-router-dom'
 const crypto = require('crypto')
 
 export class Checkout extends Component {
@@ -53,87 +54,129 @@ export class Checkout extends Component {
 
     return (
       <>
-        CheckoutPage
-        <div>
-          Merchandise Details:
-          <p>Merch sub-total: ${this.totalMerchCost(cart).toFixed(2)}</p>
-          <p>Tax: ${this.calcSalesTax(this.totalMerchCost(cart))}</p>
-          <p>Total: ${this.totalPrice(this.totalMerchCost(cart))}</p>
-        </div>
-        <div>Shipping Details:</div>
-        <div>
-          <form onSubmit={e => this.confirmCheckout(cart, e)}>
-            <div className="form-row">
-              <label htmlFor="inputName">Recipient Name:</label>
-              <input
-                name="inputName"
-                type="text"
-                className="form-control"
-                id="inputName"
-                placeholder="Recipient Name"
-                required
-              />
+        <br />
+        <h1 align="center">CheckoutPage</h1>
+        <div className="checkoutPage">
+          <div>
+            <h3>Merchandise Details:</h3>
+            <br />
+            <div>
+              <h4>
+                <img
+                  src="https://cdn0.iconfinder.com/data/icons/pokemon-go-vol-1/135/_Coin-512.png"
+                  width="5%"
+                />{' '}
+                Merch sub-total: ${this.totalMerchCost(cart).toFixed(2)}
+              </h4>
+              <h4>
+                <img
+                  src="https://cdn0.iconfinder.com/data/icons/pokemon-go-vol-1/135/_Coin-512.png"
+                  width="5%"
+                />{' '}
+                Tax: ${this.calcSalesTax(this.totalMerchCost(cart))}
+              </h4>
             </div>
-            <div className="form-group">
-              <label htmlFor="inputAddress">Address</label>
-              <input
-                name="inputAddress"
-                type="text"
-                className="form-control"
-                id="inputAddress"
-                placeholder="1234 Main St"
-                required
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="inputAddress2">Address 2</label>
-              <input
-                name="inputAddress2"
-                type="text"
-                className="form-control"
-                id="inputAddress2"
-                placeholder="Apartment, studio, or floor"
-              />
-            </div>
-            <div className="form-row">
-              <div className="form-group col-md-6">
-                <label htmlFor="inputCity">City</label>
+            <br />
+            <h4>
+              <img
+                src="https://cdn0.iconfinder.com/data/icons/pokemon-go-vol-1/135/_Coin-512.png"
+                width="5%"
+              />Total: ${this.totalPrice(this.totalMerchCost(cart))}
+            </h4>
+
+            <br />
+            <img
+              src="https://pbs.twimg.com/media/DT8tZgwXUAEcM6q.png:large"
+              width="40%"
+            />
+            <img
+              src="https://icons-for-free.com/iconfiles/png/512/coin+game+go+play+pokemon+icon-1320186969869729405.png"
+              width="20%"
+            />
+          </div>
+
+          {/* <div>Shipping Details:</div> */}
+          <div>
+            <h3>Shipping Details:</h3>
+            <form onSubmit={e => this.confirmCheckout(cart, e)}>
+              <div className="form-row">
+                <label htmlFor="inputName">Recipient Name:</label>
                 <input
-                  name="inputCity"
+                  name="inputName"
                   type="text"
                   className="form-control"
-                  id="inputCity"
-                  placeholder="City"
+                  id="inputName"
+                  placeholder="Recipient Name"
                   required
                 />
               </div>
-              <div className="form-group col-md-4">
-                <label htmlFor="inputState">State</label>
+              <div className="form-row">
+                <label htmlFor="inputAddress">Address</label>
                 <input
-                  name="inputState"
+                  name="inputAddress"
                   type="text"
                   className="form-control"
-                  id="inputState"
-                  placeholder="State"
+                  id="inputAddress"
+                  placeholder="1234 Main St"
                   required
                 />
               </div>
-              <div className="form-group col-md-2">
-                <label htmlFor="inputZip">Zip</label>
+              <div className="form-row">
+                <label htmlFor="inputAddress2">Address 2</label>
                 <input
-                  name="inputZip"
+                  name="inputAddress2"
                   type="text"
                   className="form-control"
-                  id="inputZip"
-                  placeholder="Zip Code"
-                  required
+                  id="inputAddress2"
+                  placeholder="Apartment, studio, or floor"
                 />
               </div>
-            </div>
-            <button type="submit" className="btn btn-primary">
-              Confirm
-            </button>
-          </form>
+              <div className="form-row">
+                <div className="form-group col-md-6">
+                  <label htmlFor="inputCity">City</label>
+                  <input
+                    name="inputCity"
+                    type="text"
+                    className="form-control"
+                    id="inputCity"
+                    placeholder="City"
+                    required
+                  />
+                </div>
+                <div className="form-group col-md-4">
+                  <label htmlFor="inputState">State</label>
+                  <input
+                    name="inputState"
+                    type="text"
+                    className="form-control"
+                    id="inputState"
+                    placeholder="State"
+                    required
+                  />
+                </div>
+                <div className="form-group col-md-4">
+                  <label htmlFor="inputZip">Zip</label>
+                  <input
+                    name="inputZip"
+                    type="text"
+                    className="form-control"
+                    id="inputZip"
+                    placeholder="Zip Code"
+                    required
+                  />
+                </div>
+              </div>
+              <br />
+              <div className="checkoutButtons">
+                <button type="submit" className="btn btn-success">
+                  Confirm
+                </button>
+                <Link to="/cart">
+                  <button className="btn btn-primary">Back to Cart</button>
+                </Link>
+              </div>
+            </form>
+          </div>
         </div>
       </>
     )

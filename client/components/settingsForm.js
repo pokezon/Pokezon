@@ -34,50 +34,38 @@ export default class SettingsForm extends Component {
       <div className="updateForm">
         <form onSubmit={this.handleSubmit} align="center">
           <br />
-          <h2>Change Username</h2>
+          <div className="innerForm">
+            <h2>Change Username</h2>
 
-          <label htmlFor="currentUsername" id="brand-name">
-            Current Username:{' '}
-          </label>
-          <input
-            type="text"
-            name="currentUsername"
-            value={this.state.currentUsername}
-            onChange={this.handleChange}
-            id="brand-name"
-            required
-          />
+            <label htmlFor="currentUsername" id="brand-name">
+              Current Username:{' '}
+            </label>
+            <input
+              type="text"
+              name="currentUsername"
+              value={this.state.currentUsername}
+              onChange={this.handleChange}
+              id="brand-name"
+              required
+            />
 
-          <br />
+            <br />
 
-          <label htmlFor="password" id="brand-name">
-            Password:{' '}
-          </label>
-          <input
-            type="text"
-            name="password"
-            value={this.state.password}
-            onChange={this.handleChange}
-            id="brand-name"
-            required
-          />
+            <label htmlFor="newUsername" id="brand-name">
+              New Username:{' '}
+            </label>
+            <input
+              type="text"
+              name="newUsername"
+              value={this.state.newUsername}
+              onChange={this.handleChange}
+              required
+            />
 
-          <br />
+            <br />
 
-          <label htmlFor="newUsername" id="brand-name">
-            New Username:{' '}
-          </label>
-          <input
-            type="text"
-            name="newUsername"
-            value={this.state.newUsername}
-            onChange={this.handleChange}
-            required
-          />
-
-          <br />
-
-          <input type="submit" className="btn btn-primary" id="brand-name" />
+            <input type="submit" className="btn btn-primary" id="brand-name" />
+          </div>
         </form>
       </div>
     )
