@@ -5,7 +5,7 @@ import {connect} from 'react-redux'
 import {updatingCartItem} from '../store/cart'
 import {Link} from 'react-router-dom'
 
-class Cart extends Component {
+export class Cart extends Component {
   state = {
     localCart: []
   }

@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {removingCartItem, updatingCartItem} from '../store/cart'
 import {connect} from 'react-redux'
 
-class CartItem extends Component {
+export class CartItem extends Component {
   constructor() {
     super()
     this.state = {
