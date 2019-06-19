@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import {updatingCartItem} from '../store/cart'
 const crypto = require('crypto')
 
-class Checkout extends Component {
+export class Checkout extends Component {
   generateShippingAddressObj = e => {
     return {
       recipientName: e.target.inputName.value,
