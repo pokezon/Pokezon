@@ -80,15 +80,17 @@ class SingleProduct extends Component {
               <h3>
                 <img
                   src="https://cdn0.iconfinder.com/data/icons/pokemon-go-vol-1/135/_Coin-512.png"
-                  width="7%"
-                />${product.price}
+                  width="8%"
+                />{' '}
+                ${product.price}
               </h3>
+              <br />
               <h4>{product.description}</h4>
               <div>
                 <br />
                 <img
                   src="https://i.ya-webdesign.com/images/open-pokeball-png-8.png"
-                  width="7%"
+                  width="8%"
                 />
                 <button
                   className="btn btn-primary"

@@ -74,35 +74,52 @@ export class CartItem extends Component {
   render() {
     const {product, id} = this.props.item
     return (
-      <div>
-        <h2>{product.name}</h2>
-        {/* eventually to add ability to update quantity */}
-        <h3>Quantity: {this.state.quantity}</h3>
-        <button
-          className="btn btn-success"
-          onClick={this.incrementQuantity}
-          type="button"
-          id="brand-name"
-        >
-          +
-        </button>
-        <button
-          className="btn btn-danger"
-          onClick={this.decrementQuantity}
-          type="button"
-          id="brand-name"
-        >
-          -
-        </button>
-        <h2>${product.price}</h2>
-        <button
-          className="btn btn-danger"
-          onClick={() => this.removeItem(id)}
-          type="button"
-          id="brand-name"
-        >
-          Delete
-        </button>
+      <div align="center">
+        <div className="cartItemBox">
+          <h3>
+            {product.name} <img src={product.imageUrl} width="18%" />
+          </h3>
+          <div>
+            <h5>Quantity: {this.state.quantity}</h5>
+            <button
+              className="btn btn-success"
+              onClick={this.incrementQuantity}
+              type="button"
+              id="brand-name"
+            >
+              +
+            </button>
+            <button
+              className="btn btn-danger"
+              onClick={this.decrementQuantity}
+              type="button"
+              id="brand-name"
+            >
+              -
+            </button>
+            <br />
+            <br />
+          </div>
+          <h5>
+            <img
+              src="https://cdn0.iconfinder.com/data/icons/pokemon-go-vol-1/135/_Coin-512.png"
+              width="8%"
+              align="center"
+            />{' '}
+            ${product.price}
+          </h5>
+          <div>
+            <button
+              className="btn btn-danger"
+              onClick={() => this.removeItem(id)}
+              type="button"
+              id="brand-name"
+            >
+              Delete
+            </button>
+          </div>
+        </div>
+        <br />
       </div>
     )
   }

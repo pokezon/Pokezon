@@ -12,11 +12,18 @@ class Featured extends Component {
     return (
       <div>
         {!this.props.allProducts ? (
-          'WEBSITE SEIZED BY THE U.S. GOVERNMENT'
+          'WEBSITE SEIZED BY OFFICER JENNY'
         ) : (
           <div>
             <br />
-            <h1 className=" text-center text-dark">Welcome to pokezon.</h1>
+            <h1 className=" text-center text-dark">
+              {' '}
+              <img
+                src="https://ya-webdesign.com/transparent450_/open-pokeball-png-8.png"
+                width="5%"
+              />{' '}
+              Welcome to pokezon.
+            </h1>
             <div>
               <Carousel className="carousel-text-align">
                 <Carousel.Item>
@@ -64,6 +71,7 @@ class Featured extends Component {
                         src="https://daily.pokecommunity.com/wp-content/uploads/2016/04/whos_that_pokemon_eevee.png"
                         width="55%"
                         alt="Third slide"
+                        border-radius="20px"
                       />
 
                       <Carousel.Caption className="text-dark text-shadow">

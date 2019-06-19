@@ -55,7 +55,12 @@ export class Checkout extends Component {
     return (
       <>
         <br />
-        <h1 align="center">CheckoutPage</h1>
+        <h1 align="center">
+          -$<img
+            src="https://icons-for-free.com/iconfiles/png/512/coin+game+go+play+pokemon+icon-1320186969869729405.png"
+            width="6%"
+          />$-
+        </h1>
         <div className="checkoutPage">
           <div>
             <h3>Merchandise Details:</h3>
@@ -64,14 +69,14 @@ export class Checkout extends Component {
               <h4>
                 <img
                   src="https://cdn0.iconfinder.com/data/icons/pokemon-go-vol-1/135/_Coin-512.png"
-                  width="5%"
+                  width="8%"
                 />{' '}
                 Merch sub-total: ${this.totalMerchCost(cart).toFixed(2)}
               </h4>
               <h4>
                 <img
                   src="https://cdn0.iconfinder.com/data/icons/pokemon-go-vol-1/135/_Coin-512.png"
-                  width="5%"
+                  width="8%"
                 />{' '}
                 Tax: ${this.calcSalesTax(this.totalMerchCost(cart))}
               </h4>
@@ -80,18 +85,19 @@ export class Checkout extends Component {
             <h4>
               <img
                 src="https://cdn0.iconfinder.com/data/icons/pokemon-go-vol-1/135/_Coin-512.png"
-                width="5%"
-              />Total: ${this.totalPrice(this.totalMerchCost(cart))}
+                width="8%"
+              />{' '}
+              Total: ${this.totalPrice(this.totalMerchCost(cart))}
             </h4>
 
             <br />
             <img
               src="https://pbs.twimg.com/media/DT8tZgwXUAEcM6q.png:large"
-              width="40%"
+              width="60%"
             />
             <img
               src="https://icons-for-free.com/iconfiles/png/512/coin+game+go+play+pokemon+icon-1320186969869729405.png"
-              width="20%"
+              width="25%"
             />
           </div>
 
@@ -132,18 +138,16 @@ export class Checkout extends Component {
                 />
               </div>
               <div className="form-row">
-                <div className="form-group col-md-6">
-                  <label htmlFor="inputCity">City</label>
-                  <input
-                    name="inputCity"
-                    type="text"
-                    className="form-control"
-                    id="inputCity"
-                    placeholder="City"
-                    required
-                  />
-                </div>
-                <div className="form-group col-md-4">
+                <label htmlFor="inputCity">City</label>
+                <input
+                  name="inputCity"
+                  type="text"
+                  className="form-control"
+                  id="inputCity"
+                  placeholder="City"
+                  required
+                />
+                <div className="form-row col-md-4">
                   <label htmlFor="inputState">State</label>
                   <input
                     name="inputState"
@@ -178,6 +182,7 @@ export class Checkout extends Component {
             </form>
           </div>
         </div>
+        <br />
       </>
     )
   }

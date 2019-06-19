@@ -11,7 +11,14 @@ export const Navbar = ({handleLogOut, isLoggedIn, cart}) => (
       id="brand-name"
       className="text-dark"
     >
-      <h2>pokezon.</h2>
+      <h2>
+        {' '}
+        <img
+          src="https://ui-ex.com/images/pokeball-transparent-6.png"
+          width="3%"
+        />{' '}
+        pokezon.
+      </h2>
     </a>
     <div>
       {isLoggedIn ? (
