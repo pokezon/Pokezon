@@ -10,7 +10,18 @@ const AuthForm = props => {
 
   return (
     <div className="loginPageContainer">
-      <h2 align="center">- Your Anonymity is our Priority -</h2>
+      <h2 align="center">
+        {' '}
+        -{' '}
+        <img
+          src="https://cdn.bulbagarden.net/upload/e/e3/Shuffle025MushroomHarvest.png"
+          width="30%"
+        />{' '}
+        -{' '}
+      </h2>
+      <h4 align="center">
+        "Your Anonymity is our Priority" <br />- G!0v@nn!, CEO of pokezon
+      </h4>
       <div className="loginPage">
         <form onSubmit={handleSubmit} name={name} id="auth-form">
           <div className="form-group">
@@ -35,7 +46,7 @@ const AuthForm = props => {
                 <small>
                   <img
                     src="https://img.icons8.com/cotton/2x/secured-letter--v1.png"
-                    width="6%"
+                    width="7%"
                   />{' '}
                   Email
                 </small>
@@ -55,7 +66,7 @@ const AuthForm = props => {
               <small>
                 <img
                   src="https://tr.rbxcdn.com/e75ccf8e7612a983da811d00e6d6df58/420/420/Decal/Png"
-                  width="5%"
+                  width="6%"
                 />Password:
               </small>
             </label>

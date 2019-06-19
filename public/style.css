@@ -104,7 +104,6 @@ p {
 
   width: 105%;
 
-
   /* height: 90%; */
   padding: 5%;
   align-self: center;
@@ -114,7 +113,7 @@ p {
 .singleProductContainer {
   display: flex;
   justify-content: space-evenly;
-  /* align-content: center; */
+  align-content: center;
   border-style: outset;
   background: linear-gradient(#c0c0c0, #ffffff);
   border-width: 1px;
@@ -148,7 +147,7 @@ p {
   border-width: 1px;
   border-radius: 10px;
   padding: 1%;
-  width: 30%;
+  width: 40%;
   box-shadow: 5px 5px 5px grey;
 }
 
@@ -159,7 +158,7 @@ p {
   background-color: white;
   border-width: 1px;
   border-radius: 5px;
-  /* width: 200%; */
+  width: 90%;
   padding: 3%;
   box-shadow: 5px 5px 5px grey;
 }
@@ -214,7 +213,7 @@ p {
 .loginPageContainer {
   display: flex;
   justify-content: center;
-  padding: 3%;
+  padding: 1%;
   flex-direction: column;
   align-items: center;
 }
@@ -256,15 +255,29 @@ p {
   justify-content: space-around;
 }
 
-.updateForm {
+.cartItemBox {
   display: flex;
   border-style: outset;
   background: linear-gradient(#c0c0c0, #ffffff);
   border-width: 1px;
   border-radius: 10px;
-  margin-top: 1%;
+  width: 25%;
+  box-shadow: 5px 5px 5px grey;
+  flex-direction: column;
+  padding: 1%;
+}
+
+.updateForm {
+  display: flex;
+  flex-direction: column;
+  border-style: outset;
+  background: linear-gradient(#c0c0c0, #ffffff);
+  border-width: 1px;
+  border-radius: 10px;
+  padding: 1%;
+  /* margin-top: 1%;
   margin-left: 25%;
-  margin-right: 25%;
+  margin-right: 25%;*/
   width: 25%;
   box-shadow: 5px 5px 5px grey;
 }
@@ -274,4 +287,9 @@ p {
   flex-direction: column;
   /* justify-content: center; */
   left: 20%;
+}
+
+.container {
+  display: flex;
+  justify-content: space-evenly;
 }

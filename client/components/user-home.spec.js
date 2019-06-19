@@ -16,12 +16,12 @@ describe('UserHome', () => {
     userHome = shallow(<UserHome username="cody@email.com" />)
   })
 
-  it('renders the email in an h1', () => {
+  it('renders the email in an h2', () => {
     expect(
       userHome
-        .find('h1')
+        .find('h2')
         .at(1)
         .text()
-    ).to.be.equal('cody@email.com')
+    ).to.be.equal('-- cody@email.com --')
   })
 })

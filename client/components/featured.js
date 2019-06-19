@@ -12,15 +12,25 @@ class Featured extends Component {
     return (
       <div>
         {!this.props.allProducts ? (
-          'WEBSITE SEIZED BY THE U.S. GOVERNMENT'
+          'WEBSITE SEIZED BY OFFICER JENNY'
         ) : (
           <div>
             <br />
-            <h1 className=" text-center text-dark">Welcome to pokezon.</h1>
+            <h1 className=" text-center text-dark">
+              <img
+                src="https://static.thenounproject.com/png/551642-200.png"
+                width="5%"
+              />{' '}
+              Welcome to pokézon.{' '}
+              <img
+                src="https://static.thenounproject.com/png/551643-200.png"
+                width="5%"
+              />
+            </h1>
             <div>
               <Carousel className="carousel-text-align">
                 <Carousel.Item>
-                  <Link to="/products/4">
+                  <Link to="/products/2">
                     <div>
                       <img
                         src="https://vignette.wikia.nocookie.net/pokemon/images/e/e4/Tierno_Charmander.png/revision/latest?cb=20171128041706"
@@ -40,7 +50,7 @@ class Featured extends Component {
                   </Link>
                 </Carousel.Item>
                 <Carousel.Item>
-                  <Link to="/products/8">
+                  <Link to="/products/6">
                     <div>
                       <img
                         src="https://cdna.artstation.com/p/assets/images/images/009/896/578/large/ubeyd-yuruk-screenshot001.jpg?1521473780"
@@ -64,6 +74,7 @@ class Featured extends Component {
                         src="https://daily.pokecommunity.com/wp-content/uploads/2016/04/whos_that_pokemon_eevee.png"
                         width="55%"
                         alt="Third slide"
+                        border-radius="20px"
                       />
 
                       <Carousel.Caption className="text-dark text-shadow">
@@ -82,6 +93,14 @@ class Featured extends Component {
             <br />
           </div>
         )}
+        <h1 className=" text-center text-dark">
+          -{' '}
+          <img
+            src="https://static.thenounproject.com/png/551641-200.png"
+            width="5%"
+          />{' '}
+          -
+        </h1>
       </div>
     )
   }

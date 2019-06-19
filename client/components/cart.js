@@ -50,6 +50,16 @@ export class Cart extends Component {
     return (
       <div className="text-center">
         <br />
+        <h1>
+          {' '}
+          -{' '}
+          <img
+            src="https://www.foothillsiga.com/wp-content/uploads/2016/05/shop-langing-cart-icon.png"
+            width="4%"
+          />{' '}
+          -{' '}
+        </h1>
+        <br />
         {cart.length ? (
           ''
         ) : (
@@ -65,6 +75,10 @@ export class Cart extends Component {
         ))}
         <br />
         <Link to={checkOutButtonLink}>
+          <img
+            src="https://i.ya-webdesign.com/images/open-pokeball-png-8.png"
+            width="3%"
+          />
           <button
             type="button"
             className={
@@ -77,6 +91,7 @@ export class Cart extends Component {
             {checkOutButtonLinkText}
           </button>
         </Link>
+        <br />
         <br />
       </div>
     )
