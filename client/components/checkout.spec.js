@@ -13,14 +13,7 @@ describe('Checkout functions', () => {
   it('calcSalesTax returns number', () => {
     expect(typeof checkout.calcSalesTax(totalMerchCost)).to.equal('number')
   })
-  it('calcSalesTax returns number of decimal len 2', () => {
-    expect(
-      Number.isInteger(checkout.calcSalesTax(totalMerchCost) * 100)
-    ).to.equal(true)
-  })
-  it('totalPrice returns number of decimal len 2', () => {
-    expect(
-      Number.isInteger(checkout.totalPrice(totalMerchCost) * 100)
-    ).to.equal(true)
+  it('totalPrice returns number', () => {
+    expect(typeof checkout.totalPrice(totalMerchCost)).to.equal('number')
   })
 })
